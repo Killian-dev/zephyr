@@ -16,11 +16,13 @@
 
 manifest:
   defaults:
-    remote: upstream
+    remote: bluenrglp_zephyr
 
   remotes:
     - name: upstream
       url-base: https://github.com/zephyrproject-rtos
+    - name: bluenrglp_zephyr
+      url-base: https://codex.cro.st.com/plugins/git/emearfsupport/Zephyr_BlueNRG_LP
 
   #
   # Please add items below based on alphabetical order
