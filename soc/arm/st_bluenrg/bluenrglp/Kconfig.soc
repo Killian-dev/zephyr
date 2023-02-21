@@ -2,12 +2,12 @@
 # Copyright (c) 2019 Stephanos Ioannidis <root@stephanos.io>
 # SPDX-License-Identifier: Apache-2.0
 
-config SOC_BLUENRG
-	bool "BlueNRG"
+config SOC_BLUENRG_LP
+	bool "BlueNRG_LP"
 	select ARM
 	select CPU_CORTEX_M0
 	select SOC_FAMILY_BLUENRG
-	select BLUENRG
+	select BLUENRG_LP
 	select HAS_BLUENRG_HAL
 	select CPU_CORTEX_M_HAS_SYSTICK
 	select CORTEX_M_SYSTICK
