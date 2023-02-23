@@ -1,7 +1,7 @@
 # Copyright (c) 2019 Stephanos Ioannidis <root@stephanos.io>
 # SPDX-License-Identifier: Apache-2.0
 
-config SOC_BLUENRG
+config SOC_BLUENRG_LP
 	bool
 
 config NUM_GPIOS

@@ -2,10 +2,10 @@
 # Copyright (c) 2019 Stephanos Ioannidis <root@stephanos.io>
 # SPDX-License-Identifier: Apache-2.0
 
-if SOC_BLUENRG
+if SOC_BLUENRG_LP
 
 config SOC
-	default "st_bluenrg"
+	default "st_bluenrg_lp"
 
 config NUM_IRQS
 	default 32
@@ -13,18 +13,18 @@ config NUM_IRQS
 config NUM_GPIOS
 	default 25
 
-config PINMUX_BLUENRG
+config PINMUX_BLUENRG_LP
 	bool
 	default y
 	depends on PINMUX
 
-config UART_BLUENRG
+config UART_BLUENRG_LP
 	bool
 	default y
 	depends on SERIAL
 
-config SPI_BLUENRG
+config SPI_BLUENRG_LP
 	bool
 	default y
 	
-endif # SOC_BLUENRG
+endif # SOC_BLUENRG_LP

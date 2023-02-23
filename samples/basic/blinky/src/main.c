@@ -37,6 +37,7 @@ void main(void)
 		if (ret < 0) {
 			return;
 		}
+		printk("Blink1\n");
 		k_msleep(SLEEP_TIME_MS);
 	}
 }

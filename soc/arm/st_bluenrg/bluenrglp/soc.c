@@ -25,7 +25,7 @@ extern int __low_level_init(void);
  *
  * @return 0
  */
-static int bluenrg_init(struct device *arg)
+static int bluenrg_lp_init(struct device *arg)
 {
 	u32_t key;
 
@@ -46,4 +46,4 @@ static int bluenrg_init(struct device *arg)
 	return 0;
 }
 
-SYS_INIT(bluenrg_init, PRE_KERNEL_1, 0);
+SYS_INIT(bluenrg_lp_init, PRE_KERNEL_1, 0);

@@ -1,0 +1,69 @@
+/*
+ * Copyright (c) 2017 Powersoft
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+#include <st/bluenrg/bluenrg_lp.dtsi>
+
+/ {
+	model = "STMicroelectronics BLUENRG_LP board";
+	compatible = "st,bluenrg_lp";
+
+	chosen {
+		zephyr,sram = &sram0;
+		zephyr,flash = &flash0;
+		zephyr,console = &usart1;
+		zephyr,shell-uart = &usart1;
+	};
+
+	leds {
+		compatible = "gpio-leds";
+		green_led_1: led_1 {
+			gpios = <&gpio 6 GPIO_ACTIVE_HIGH>;
+			label = "User LD1";
+		};
+		green_led_2: led_2 {
+			gpios = <&gpio 7 GPIO_ACTIVE_HIGH>;
+			label = "User LD2";
+		};
+		green_led_3: led_3 {
+			gpios = <&gpio 14 GPIO_ACTIVE_HIGH>;
+			label = "User LD3";
+		};
+	};
+
+	gpio_keys {
+		compatible = "gpio-keys";
+		user_button1: button1 {
+			label = "User Button 1";
+			gpios = <&gpio 13 GPIO_ACTIVE_LOW>;
+		};
+		user_button2: button2 {
+			label = "User Button 2";
+			gpios = <&gpio 5 GPIO_ACTIVE_LOW>;
+		};
+	};
+
+	aliases {
+		led0 = &green_led_1;
+		led1 = &green_led_2;
+		led2 = &green_led_3;
+		sw0 = &user_button1;
+		sw1 = &user_button2;
+	};
+};
+
+&usart1 {
+	current-speed = <115200>;
+	status = "okay";
+};
+
+&adc1 {
+	status = "okay";
+};
+
+&spi1 {
+	status = "okay";
+};

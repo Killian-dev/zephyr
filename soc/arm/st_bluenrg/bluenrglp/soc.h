@@ -15,8 +15,8 @@
  * Chapter 2.2.2: Memory map and register boundary addresses
  */
 
-#ifndef _BLUENRG_SOC_H_
-#define _BLUENRG_SOC_H_
+#ifndef _BLUENRG_LP_SOC_H_
+#define _BLUENRG_LP_SOC_H_
 
 
 #include <sys/util.h>
@@ -24,14 +24,14 @@
 // #ifndef _ASMLANGUAGE
 
 #include <autoconf.h>
-#include <BlueNRG2.h>
+#include <BlueNRG_LP.h>
 
 /* Add include for DTS generated information */
 #include <devicetree.h>
-#include <BlueNRG1_gpio.h>
-#include <BlueNRG1_uart.h>
+#include <rf_driver_hal_gpio.h>
+#include <rf_driver_hal_uart.h>
 #include <BlueNRG1_sysCtrl.h>
-#include <BlueNRG1_adc.h>
-#include <BlueNRG1_spi.h>
+#include <rf_driver_hal_adc.h>
+#include <rf_driver_hal_spi.h>
 #include <misc.h>
-#endif /* _BLUENRG_SOC_H_ */
+#endif /* _BLUENRG_LP_SOC_H_ */
