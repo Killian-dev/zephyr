@@ -42,6 +42,8 @@ BlueNRG-LP memory map
 +-----------------------+ 0x10000000
 */
 
+#include <zephyr/arch/arm/aarch32/cortex_m/scripts/linker.ld>
+
 
 _MEMORY_RAM_BEGIN_   = 0x20000000;
 
