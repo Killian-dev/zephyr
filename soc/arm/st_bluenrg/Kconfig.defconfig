@@ -11,7 +11,7 @@ config NUM_IRQS
 	default 32
 
 config NUM_GPIOS
-	default 25
+	default 32
 
 config PINMUX_BLUENRG_LP
 	bool

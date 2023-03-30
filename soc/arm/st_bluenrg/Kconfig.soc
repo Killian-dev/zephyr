@@ -5,7 +5,7 @@
 config SOC_BLUENRG_LP
 	bool "BlueNRG_LP"
 	select ARM
-	select CPU_CORTEX_M0
+	select CPU_CORTEX_M0PLUS
 	select SOC_FAMILY_BLUENRG
 	select BLUENRG_LP
 	select HAS_BLUENRG_HAL
