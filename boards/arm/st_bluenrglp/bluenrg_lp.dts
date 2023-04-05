@@ -5,7 +5,7 @@
  */
 
 /dts-v1/;
-#include <st/bluenrg/bluenrg_lp.dtsi>
+#include <st/bluenrg_lp/bluenrg_lp.dtsi>
 
 / {
 	model = "STMicroelectronics BLUENRG_LP board";
@@ -17,7 +17,8 @@
 		zephyr,console = &usart1;
 		zephyr,shell-uart = &usart1;
 	};
-
+};
+/*
 	leds {
 		compatible = "gpio-leds";
 		green_led_1: led_1 {
@@ -55,6 +56,7 @@
 	};
 };
 
+
 &usart1 {
 	current-speed = <115200>;
 	status = "okay";
@@ -67,3 +69,4 @@
 &spi1 {
 	status = "okay";
 };
+*/

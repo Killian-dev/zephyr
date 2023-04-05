@@ -4,8 +4,8 @@
 
 if SOC_BLUENRG_LP
 
-config SOC
-	default "st_bluenrg_lp"
+# config SOC
+# 	default "bluenrg_lp"
 
 config NUM_IRQS
 	default 32
@@ -15,16 +15,16 @@ config NUM_GPIOS
 
 config PINMUX_BLUENRG_LP
 	bool
-	default y
+	default n
 	depends on PINMUX
 
 config UART_BLUENRG_LP
 	bool
-	default y
+	default n
 	depends on SERIAL
 
 config SPI_BLUENRG_LP
 	bool
-	default y
+	default n
 	
 endif # SOC_BLUENRG_LP
