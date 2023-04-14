@@ -1,5 +1,5 @@
 identifier: bluenrg_lp
-name: BlueNRG_LP
+name: BLUENRG_LP
 type: mcu
 arch: arm
 toolchain:

@@ -1,8 +1,18 @@
-# Copyright (c) 2019 Stephanos Ioannidis <root@stephanos.io>
+# ST Microelectronics STM32 MCU line
+
+# Copyright (c) 2016 Open-RnD Sp. z o.o.
 # SPDX-License-Identifier: Apache-2.0
 
-config SOC_BLUENRG_LP
+config SOC_FAMILY_BLUENRG
 	bool
+	select HAS_SEGGER_RTT
+	select BUILD_OUTPUT_HEX
 
-config NUM_GPIOS
-	int "Upper limit of GPIOS"
+if SOC_FAMILY_BLUENRG
+config SOC_FAMILY
+	string
+	default "st_bluenrg"
+
+source "soc/arm/st_bluenrg/*/Kconfig.soc"
+
+endif # SOC_FAMILY_BLUENRG

@@ -5,11 +5,11 @@
  */
 
 /dts-v1/;
-#include <st/bluenrg_lp/bluenrg_lp.dtsi>
+#include <st/bluenrg/steval_idb011v2.dtsi>
 
 / {
-	model = "STMicroelectronics BLUENRG_LP board";
-	compatible = "st,bluenrg_lp";
+	model = "STMicroelectronics BLUENRG_LP-STEVAL_IDB011V2 board";
+	compatible = "st,bluenrg_lp-steval_idb011v2";
 
 	chosen {
 		zephyr,sram = &sram0;

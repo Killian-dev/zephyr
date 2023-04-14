@@ -2,9 +2,9 @@
 
 # SPDX-License-Identifier: Apache-2.0
 
-if BOARD_BLUENRG_LP
+if BOARD_STEVAL_IDB011V2
 
 config BOARD
-	default "bluenrg_lp"
+	default "steval_idb011v2"
 
-endif # BOARD_BLUENRG_LP
+endif # BOARD_STEVAL_IDB011V2
