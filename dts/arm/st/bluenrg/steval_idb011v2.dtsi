@@ -31,6 +31,36 @@
          reg = <0x20000000 DT_SIZE_K(64)>;
      };
  
+    //  clocks {
+	// 	clk_hse: clk-hse {
+	// 		#clock-cells = <0>;
+	// 		compatible = "st,bluenrg-hse-clock";
+	// 		status = "disabled";
+	// 	};
+
+	// 	clk_hsi: clk-hsi {
+	// 		#clock-cells = <0>;
+	// 		compatible = "fixed-clock";
+	// 		clock-frequency = <DT_FREQ_M(16)>;
+	// 		status = "disabled";
+	// 	};
+
+	// 	clk_lse: clk-lse {
+	// 		#clock-cells = <0>;
+	// 		compatible = "st,bluenrg-lse-clock";
+	// 		clock-frequency = <32768>;
+	// 		driving-capability = <0>;
+	// 		status = "disabled";
+	// 	};
+
+	// 	clk_lsi: clk-lsi {
+	// 		#clock-cells = <0>;
+	// 		compatible = "fixed-clock";
+	// 		clock-frequency = <DT_FREQ_K(37)>;
+	// 		status = "disabled";
+	// 	};
+	// };
+
      soc {
         // interrupt, address et size-cells à vérifier
          flash-controller@40001000 {
@@ -54,7 +84,6 @@
              label = "BLUENRG_LP_CLK_RCC";
          };
          // pincrtl : add & size à vérif
-         /*
          pinctrl: pin-controller@48000000 {
 			compatible = "st,bluenrg_lp-pinctrl";
 			#address-cells = <1>;
@@ -80,7 +109,7 @@
                 label = "GPIOB";
 			};
          };
-         */
+         
          // interrupt & clocks à vérif
          usart1: serial@41004000 {
              compatible = "st,bluenrg_lp-uart";

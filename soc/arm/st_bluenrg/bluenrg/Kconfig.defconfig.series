@@ -8,6 +8,6 @@ if SOC_SERIES_BLUENRG
 config SOC_SERIES
 	default "bluenrg"
 
-source "soc/arm/st_bluenrg/bluenrg_lp/Kconfig.defconfig.bluenrg_lp*"
+source "soc/arm/st_bluenrg/bluenrg/Kconfig.defconfig.bluenrg_lp*"
 
 endif # SOC_SERIES_BLUENRG

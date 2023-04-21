@@ -10,12 +10,20 @@
  * @brief System/hardware module for STM32L4 processor
  */
 
-#include <device.h>
-#include <init.h>
-#include <arch/cpu.h>
-#include <arch/arm/aarch32/cortex_m/cmsis.h>
+#include <zephyr/device.h>
+#include <zephyr/init.h>
+#include <zephyr/arch/cpu.h>
+#include <zephyr/arch/arm/aarch32/cortex_m/cmsis.h>
+#include <zephyr/arch/arm/aarch32/nmi.h>
+#include <zephyr/irq.h>
+#include <zephyr/linker/linker-defs.h>
+#include <string.h>
 
-extern int __low_level_init(void);
+// #include <stm32_ll_bus.h>
+// #include <stm32_ll_pwr.h>
+// #include <stm32_ll_bus.h>
+
+// extern int __low_level_init(void);
 
 /**
  * @brief Perform basic hardware initialization at boot.
@@ -25,9 +33,9 @@ extern int __low_level_init(void);
  *
  * @return 0
  */
-static int bluenrg_lp_init(struct device *arg)
+static int bluenrg_init(const struct device *arg)
 {
-	u32_t key;
+	uint32_t key;
 
 	ARG_UNUSED(arg);
 
@@ -40,10 +48,9 @@ static int bluenrg_lp_init(struct device *arg)
 
 	irq_unlock(key);
 
-	__low_level_init();
 
-	DeviceConfiguration(TRUE, TRUE);
+	
 	return 0;
 }
 
-SYS_INIT(bluenrg_lp_init, PRE_KERNEL_1, 0);
+SYS_INIT(bluenrg_init, PRE_KERNEL_1, 0);
