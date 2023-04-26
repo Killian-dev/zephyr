@@ -19,7 +19,7 @@
 #include <zephyr/linker/linker-defs.h>
 #include <string.h>
 
-// #include <stm32_ll_bus.h>
+// #include <rf_driver_hal.h>
 // #include <stm32_ll_pwr.h>
 // #include <stm32_ll_bus.h>
 
