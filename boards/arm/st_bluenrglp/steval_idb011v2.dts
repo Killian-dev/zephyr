@@ -5,8 +5,8 @@
  */
 
 /dts-v1/;
-#include <st/bluenrg/steval_idb011v2.dtsi>
-#include "steval_idb011v2-pinctrl.dtsi"
+#include <st/bluenrg/bluenrg_lp.dtsi>
+//#include "steval_idb011v2-pinctrl.dtsi"
 
 / {
 	model = "STMicroelectronics BLUENRG_LP-STEVAL_IDB011V2 board";
@@ -15,38 +15,38 @@
 	chosen {
 		zephyr,sram = &sram0;
 		zephyr,flash = &flash0;
-		zephyr,console = &usart;
-		zephyr,shell-uart = &usart;
+		// zephyr,console = &usart1;
+		// zephyr,shell-uart = &usart1;
 	};
 };
 
-&clk_hse {
-	hse-bypass;
-	clock-frequency = <8000000>; /* STLink 8MHz clock */
-	status = "okay";
-};
+// &clk_hse {
+// 	hse-bypass;
+// 	clock-frequency = <8000000>; /* STLink 8MHz clock */
+// 	status = "okay";
+// };
 
-&pll {
-	clocks = <&clk_hse>;
-	mul = <8>;
-	div = <2>;
-	status = "okay";
-};
+// &pll {
+// 	clocks = <&clk_hse>;
+// 	mul = <8>;
+// 	div = <2>;
+// 	status = "okay";
+// };
 
-&rcc {
-	clocks = <&pll>;
-	clock-frequency = <32000000>;
-	ahb-prescaler = <1>;
-	apb1-prescaler = <1>;
-	apb2-prescaler = <1>;
-};
+// &rcc {
+// 	clocks = <&pll>;
+// 	clock-frequency = <32000000>;
+// 	ahb-prescaler = <1>;
+// 	apb1-prescaler = <1>;
+// 	apb2-prescaler = <1>;
+// };
 
-&usart {
-	pinctrl-0 = <&usart_tx_pa9 &usart_rx_pa8>;
-	pinctrl-names="default";
-	current-speed = <115200>;
-	status = "okay";
-};
+// &usart1 {
+// 	pinctrl-0 = <&usart_tx_pa9 &usart_rx_pa8>;
+// 	pinctrl-names="default";
+// 	current-speed = <115200>;
+// 	status = "okay";
+// };
 
 /*
 	leds {

@@ -5,7 +5,6 @@
 	soc {
 		pinctrl: pin-controller@48000000 {
 
-
 			/* UART_RX / USART_RX / LPUART_RX */
 
 			/omit-if-no-ref/ usart_rx_pa8: usart_rx_pa8 {

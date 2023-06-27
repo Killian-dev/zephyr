@@ -29,6 +29,7 @@
 #include <zephyr/linker/sections.h>
 //#include <zephyr/drivers/clock_control/bluenrg_clock_control.h>
 #include "uart_bluenrg.h"
+#include "bluenrg_lpx.h"
 
 #include <rf_driver_ll_usart.h>
 #include <rf_driver_ll_lpuart.h>
@@ -167,47 +168,51 @@ static int uart_bluenrg_init(const struct device *dev)
 	uint32_t ll_datawidth;
 	int err;
 
-	__uart_bluenrg_get_clock(dev);
+	//__uart_bluenrg_get_clock(dev);
 
-	if (!device_is_ready(data->clock)) {
-		LOG_ERR("clock control device not ready");
-		return -ENODEV;
-	}
+	// if (!device_is_ready(data->clock)) {
+	// 	LOG_ERR("clock control device not ready");
+	// 	return -ENODEV;
+	// }
 
 	/* enable clock */
+	LL_RCC_HSE_SetCapacitorTuning(32);
+	LL_RCC_HSE_SetCurrentControl((0x2U << (4UL) | 0x1U << (4UL))); // LL_RCC_HSE_CURRENTMAX_3 : (RCC_RFSWHSECR_GMC_1| RCC_RFSWHSECR_GMC_0) : (0x2U << (4UL) | 0x1U << (4UL))
+	//SystemTimer_TimeoutConfig(32000000, 100, TRUE);
+	LL_RCC_HSE_Enable();
 	LL_APB1_EnableClock(0x400UL);
 
-	err = clock_control_on(data->clock, (clock_control_subsys_t)&config->pclken[0]);
-	if (err != 0) {
-		LOG_ERR("Could not enable (LP)UART clock");
-		return err;
-	}
+	// err = clock_control_on(data->clock, (clock_control_subsys_t)&config->pclken[0]);
+	// if (err != 0) {
+	// 	LOG_ERR("Could not enable (LP)UART clock");
+	// 	return err;
+	// }
 
-	if (IS_ENABLED(BLUENRG_UART_DOMAIN_CLOCK_SUPPORT) && (config->pclk_len > 1)) {
-		err = clock_control_configure(DEVICE_DT_GET(BLUENRG_CLOCK_CONTROL_NODE),
-					      (clock_control_subsys_t) &config->pclken[1],
-					      NULL);
-		if (err != 0) {
-			LOG_ERR("Could not select UART domain clock");
-			return err;
-		}
-	}
+	// if (IS_ENABLED(BLUENRG_UART_DOMAIN_CLOCK_SUPPORT) && (config->pclk_len > 1)) {
+	// 	err = clock_control_configure(DEVICE_DT_GET(BLUENRG_CLOCK_CONTROL_NODE),
+	// 				      (clock_control_subsys_t) &config->pclken[1],
+	// 				      NULL);
+	// 	if (err != 0) {
+	// 		LOG_ERR("Could not select UART domain clock");
+	// 		return err;
+	// 	}
+	// }
 
 	/* Configure dt provided device signals when available */
-	err = pinctrl_apply_state(config->pcfg, PINCTRL_STATE_DEFAULT);
-	if (err < 0) {
-		return err;
-	}
+	// err = pinctrl_apply_state(config->pcfg, PINCTRL_STATE_DEFAULT);
+	// if (err < 0) {
+	// 	return err;
+	// }
 
 	LL_USART_Disable(config->usart);
 
-	if (!device_is_ready(data->reset.dev)) {
-		LOG_ERR("reset controller not ready");
-		return -ENODEV;
-	}
+	// if (!device_is_ready(data->reset.dev)) {
+	// 	LOG_ERR("reset controller not ready");
+	// 	return -ENODEV;
+	// }
 
 	/* Reset UART to default state using RCC */
-	reset_line_toggle_dt(&data->reset);
+	//reset_line_toggle_dt(&data->reset);
 
 	/* TX/RX direction */
 	LL_USART_SetTransferDirection(config->usart,
