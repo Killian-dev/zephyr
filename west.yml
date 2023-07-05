@@ -135,6 +135,11 @@ manifest:
       path: modules/hal/stm32
       groups:
         - hal
+    - name: hal_st_bluenrg
+      revision: 4fb1410ddebe6ebe44a68aa8a3ea97da8b6f6d44
+      path: modules/hal/st_bluenrg
+      groups:
+        - hal
     - name: hal_telink
       revision: 38573af589173259801ae6c2b34b7d4c9e626746
       path: modules/hal/telink

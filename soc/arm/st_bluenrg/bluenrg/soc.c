@@ -18,15 +18,8 @@
 #include <zephyr/irq.h>
 #include <zephyr/linker/linker-defs.h>
 #include <string.h>
+#include <soc.h>
 
-//#include <rf_driver_hal.h>
-#include </local/home/lerayk/zephyrproject/modules/hal/st_bluenrg/bluenrg_family/bluenrglp/drivers/include/rf_driver_ll_bus.h>
-#include </local/home/lerayk/zephyrproject/modules/hal/st_bluenrg/bluenrg_family/bluenrglp/drivers/include/rf_driver_ll_gpio.h>
-// #include <rf_driver_ll_rcc.h>
-// #include <rf_driver_ll_usart.h>
-
-// #include <stm32_ll_pwr.h>
-// #include <stm32_ll_bus.h>
 
 /**
  * @brief Perform basic hardware initialization at boot.
@@ -56,18 +49,19 @@ static int bluenrg_init(const struct device *arg)
 	
 	// START SmpsTrimConfig() function
 	
-	// uint32_t main_regulator, smps_out_voltage, lsi_bw, hsi_calib, lsi_lpmu;
-	// uint8_t eng_lsi_bw_flag;
+	uint32_t main_regulator, smps_out_voltage, lsi_bw, hsi_calib, lsi_lpmu;
+	uint8_t eng_lsi_bw_flag;
 	
 	//  /* Retrieve Trimming values from engineering flash locations */
-	// if (*(volatile uint32_t*) 0x10001EF8 == 0xFCBCECCC) {
-	// 	main_regulator    = ((*(volatile uint32_t*)0x10001EE4) & (0x0F << 0)) >> 0;
-	// 	smps_out_voltage  = ((*(volatile uint32_t*)0x10001EE4) & (0x07 << 4)) >> 4;
-	// 	lsi_lpmu          = ((*(volatile uint32_t*)0x10001EE4) & (0x0F << 8)) >> 8;
-	// 	lsi_bw            = ((*(volatile uint32_t*)0x10001EE4) & (0x0F << 12)) >> 12;
-	// 	hsi_calib         = ((*(volatile uint32_t*)0x10001EE4) & (0x3F << 16)) >> 16;
-	// 	eng_lsi_bw_flag   = 1U; //TRUE
-	// } else {
+	if (*(volatile uint32_t*) 0x10001EF8 == 0xFCBCECCC) {
+		main_regulator    = ((*(volatile uint32_t*)0x10001EE4) & (0x0F << 0)) >> 0;
+		smps_out_voltage  = ((*(volatile uint32_t*)0x10001EE4) & (0x07 << 4)) >> 4;
+		lsi_lpmu          = ((*(volatile uint32_t*)0x10001EE4) & (0x0F << 8)) >> 8;
+		lsi_bw            = ((*(volatile uint32_t*)0x10001EE4) & (0x0F << 12)) >> 12;
+		hsi_calib         = ((*(volatile uint32_t*)0x10001EE4) & (0x3F << 16)) >> 16;
+		eng_lsi_bw_flag   = 1U; //TRUE
+	} 
+	else {
 	// 	main_regulator    = 0x08;
 	// 	lsi_lpmu          = 0x08;
 	// 	hsi_calib         = 0x1E;
@@ -76,7 +70,7 @@ static int bluenrg_init(const struct device *arg)
 	// }
 	
 	// /* Set HSI Calibration Trimming value */
-	// LL_RCC_HSI_SetCalibTrimming(hsi_calib);
+	LL_RCC_HSI_SetCalibTrimming(hsi_calib);
 
 	// /* Low speed internal RC trimming value set by software */
 	// if (eng_lsi_bw_flag)
