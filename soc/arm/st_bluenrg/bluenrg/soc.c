@@ -20,7 +20,6 @@
 #include <string.h>
 #include <soc.h>
 
-
 /**
  * @brief Perform basic hardware initialization at boot.
  *
@@ -44,10 +43,13 @@ static int bluenrg_init(const struct device *arg)
 
 	irq_unlock(key);
 	
-	// /* enable clock */
+	/* enable clock */
 	// LL_Power à ajouter (pour le sleep mode donc pas obligé)
-	
-	// START SmpsTrimConfig() function
+	// BEGIN of SystemInit() 
+	LL_PWR_EnableRAMBankRet(LL_PWR_RAMRET_1);
+	// BEGIN of SmpsTrimConfig() 
+	SystemReadyWait(200, LL_PWR_IsSMPSReady, 1);
+	LL_PWR_SetSMPSBOM(LL_PWR_SMPS_BOM3);
 	
 	uint32_t main_regulator, smps_out_voltage, lsi_bw, hsi_calib, lsi_lpmu;
 	uint8_t eng_lsi_bw_flag;
@@ -62,55 +64,127 @@ static int bluenrg_init(const struct device *arg)
 		eng_lsi_bw_flag   = 1U; //TRUE
 	} 
 	else {
-	// 	main_regulator    = 0x08;
-	// 	lsi_lpmu          = 0x08;
-	// 	hsi_calib         = 0x1E;
-	// 	eng_lsi_bw_flag   = 0U; //FALSE
-	// 	smps_out_voltage  = 0x03;
-	// }
+		main_regulator    = 0x08;
+		lsi_lpmu          = 0x08;
+		hsi_calib         = 0x1E;
+		eng_lsi_bw_flag   = 0U; //FALSE
+		smps_out_voltage  = 0x03;
+	}
 	
-	// /* Set HSI Calibration Trimming value */
+	/* Set HSI Calibration Trimming value */
 	LL_RCC_HSI_SetCalibTrimming(hsi_calib);
 
-	// /* Low speed internal RC trimming value set by software */
-	// if (eng_lsi_bw_flag)
-	// 	LL_RCC_LSI_SetTrimming(lsi_bw);
+	/* Low speed internal RC trimming value set by software */
+	if (eng_lsi_bw_flag)
+		LL_RCC_LSI_SetTrimming(lsi_bw);
 	
-	// /* Set LSI LPMU Trimming value */
-	// LL_PWR_SetLSILPMUTrim(lsi_lpmu);
+	/* Set LSI LPMU Trimming value */
+	LL_PWR_SetLSILPMUTrim(lsi_lpmu);
 		
-	// /* Set Main Regulator voltage Trimming value */ 
-	// LL_PWR_SetMRTrim(main_regulator);
+	/* Set Main Regulator voltage Trimming value */ 
+	LL_PWR_SetMRTrim(main_regulator);
 
-	// /* Set SMPS output voltage Trimming value */
-	// LL_PWR_SetSMPSTrim(smps_out_voltage);
+	/* Set SMPS output voltage Trimming value */
+	LL_PWR_SetSMPSTrim(smps_out_voltage);
 	
-	// /* Set SMPS in LP Open */
-	// LL_PWR_SetSMPSOpenMode(0x100UL);
+	/* Set SMPS in LP Open */
+	LL_PWR_SetSMPSOpenMode(0x100UL);
 	
-	// /* No SMPS configuration */
-	// LL_PWR_SetSMPSMode(0x400UL);
+	/* No SMPS configuration */
+	LL_PWR_SetSMPSMode(0x400UL);
 	
 	//END SmpsTrimConfig() function
 	
-	/*
-	LL_RCC_HSE_SetCapacitorTuning(32); //centrer crystal
-	LL_RCC_HSE_SetCurrentControl((0x2U << (4UL) | 0x1U << (4UL))); // LL_RCC_HSE_CURRENTMAX_3 : (RCC_RFSWHSECR_GMC_1| RCC_RFSWHSECR_GMC_0) : (0x2U << (4UL) | 0x1U << (4UL))
-	//SystemTimer_TimeoutConfig(32000000, 100, TRUE);
-	LL_RCC_HSE_Enable();
-	LL_RCC_SetRC64MPLLPrescaler((0x4U) << (5UL)); // RCC 16Mhz
-	LL_RCC_RC64MPLL_Enable();
-	LL_RCC_DIRECT_HSE_Enable();
-	//LL_AHB_PERIPH_ALL //Tout init
+	// BEGIN LSConfig()
+	// Low speed crystal configuration 
 	
-	LL_AHB_EnableClock(0x4UL);
-	LL_AHB_EnableClock(0x8UL);
-	LL_APB0_EnableClock(0x100UL);
-	LL_APB1_EnableClock(0x400UL);
+	LL_PWR_SetNoPullB(LL_PWR_PUPD_IO12|LL_PWR_PUPD_IO13);
+	LL_RCC_LSCO_SetSource(LL_RCC_LSCO_CLKSOURCE_LSE);
 	
-	// Sortir la HSE sur MCO
+	// Set LSE oscillator drive capability 
+	LL_RCC_LSE_SetDriveCapability(LL_RCC_LSEDRIVE_HIGH);
+	
+	LL_RCC_LSI_Disable();
+	
+	// Need to explicitly disable LSE to make LSERDY flag go to 0 even without POR, in case it was enabled. 
+	LL_RCC_LSE_Disable();  
+	SystemReadyWait(300, LL_RCC_LSE_IsReady, 0);
+
+	LL_RCC_LSE_Enable();
+	SystemReadyWait(300, LL_RCC_LSE_IsReady, 1);
+	// END LSConfig()
 	
 
+	// Set current and capacitors for High Speed Crystal Oscillator
+	LL_RCC_HSE_SetCapacitorTuning(32); //centrer crystal
+	LL_RCC_HSE_SetCurrentControl((0x2U << (4UL) | 0x1U << (4UL))); // LL_RCC_HSE_CURRENTMAX_3 : (RCC_RFSWHSECR_GMC_1| RCC_RFSWHSECR_GMC_0) : (0x2U << (4UL) | 0x1U << (4UL))
+
+	// BEGIN SystemClockConfig()
+	//SystemTimer_TimeoutConfig(32000000, 100, TRUE);
+	LL_RCC_HSE_Enable();
+	SystemReadyWait(100, LL_RCC_HSE_IsReady, 1);
+	LL_RCC_SetRC64MPLLPrescaler((0x4U) << (5UL)); // RCC 16Mhz
+	LL_RCC_RC64MPLL_Enable();
+	if(SystemReadyWait(200, LL_RCC_RC64MPLL_IsReady, 1) == 0U);
+	else { // DIRECT HSE configuration
+		LL_RCC_SetRC64MPLLPrescaler(LL_RCC_RC64MPLL_DIV_2);
+		LL_RCC_DIRECT_HSE_Enable();
+		SystemCoreClock = 32000000;
+	}
+	
+	// FLASH Wait State configuration
+	if (SystemCoreClock != 64000000) {
+		LL_FLASH_SetWaitStates(FLASH, LL_FLASH_WAIT_STATES_0);
+	}
+	// END SystemClockConfig()
+
+	
+	// BEGIN Configure_GPIO()
+	LL_AHB_EnableClock(0x4UL);
+	LL_AHB_EnableClock(LL_AHB_PERIPH_GPIOB);
+	LL_APB0_EnableClock(0x100UL);
+	LL_APB1_EnableClock(0x400UL);
+
+	/* Configure IO in output */
+	LL_GPIO_SetPinMode(GPIOB, LL_GPIO_PIN_8, LL_GPIO_MODE_OUTPUT);
+	/* Reset value is LL_GPIO_OUTPUT_PUSHPULL */
+	LL_GPIO_SetPinOutputType(GPIOB, LL_GPIO_PIN_8, LL_GPIO_OUTPUT_PUSHPULL);
+	/* Reset value is LL_GPIO_SPEED_FREQ_LOW */
+	LL_GPIO_SetPinSpeed(GPIOB, LL_GPIO_PIN_8, LL_GPIO_SPEED_FREQ_LOW);
+	/* Reset value is LL_GPIO_PULL_NO */
+	LL_GPIO_SetPinPull(GPIOB, LL_GPIO_PIN_8, LL_GPIO_PULL_NO);
+	// END Configure_GPIO()
+
+
+	// BEGIN MX_GPIO_Init()
+	LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+	LL_GPIO_SetOutputPin(GPIOB, LL_GPIO_PIN_8);
+	GPIO_InitStruct.Pin = LL_GPIO_PIN_8;
+	GPIO_InitStruct.Mode = LL_GPIO_MODE_OUTPUT;
+	GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
+	GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+	GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
+	LL_GPIO_Init(GPIOB, &GPIO_InitStruct);	//Le problème est ici
+	// END MX_GPIO_Init()
+
+	LL_GPIO_TogglePin(GPIOB, LL_GPIO_PIN_8);
+
+
+
+
+	/*
+	// Set systick clock to 1ms using system clock frequency
+	//LL_Init1msTick(SystemCoreClock);
+
+	//MX_GPIO_Init();
+
+	//LL_GPIO_TogglePin((GPIO_TypeDef*)(((0x40000000U)+(0x08000000U))+(0x100000UL)), 0x100UL);
+	//LL_AHB_PERIPH_ALL //Tout init
+
+	// Sortir la HSE sur MCO
+	
+	
 	//Avant de faire un UART, toggle un gpio dans une boucle infinie pour voir si mes inits clocks fonctionnent
 	//Il faut qd même activer la clock du gpio et ensuite taper dans le registre en write 1, wait, write 0.
 	LL_AHB_PERIPH_ALL
