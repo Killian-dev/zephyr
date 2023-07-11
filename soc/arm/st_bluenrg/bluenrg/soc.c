@@ -119,6 +119,7 @@ static int bluenrg_init(const struct device *arg)
 	LL_RCC_HSE_SetCapacitorTuning(32); //centrer crystal
 	LL_RCC_HSE_SetCurrentControl(LL_RCC_HSE_CURRENTMAX_3); // LL_RCC_HSE_CURRENTMAX_3 : (RCC_RFSWHSECR_GMC_1| RCC_RFSWHSECR_GMC_0) : (0x2U << (4UL) | 0x1U << (4UL))
 
+
 	// BEGIN SystemClockConfig()
 	//SystemTimer_TimeoutConfig(32000000, 100, TRUE);
 	LL_RCC_HSE_Enable();
