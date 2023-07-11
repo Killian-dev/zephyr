@@ -32,6 +32,7 @@
 #include <rf_driver_ll_pwr.h>
 #include <rf_driver_ll_flash.h>
 #include <rf_driver_ll_gpio.h>
+#include <rf_driver_ll_utils.h>
 #include <rf_driver_ll_bus.h>
 #include <rf_driver_hal_gpio.h>
 #include <rf_driver_hal_uart.h>

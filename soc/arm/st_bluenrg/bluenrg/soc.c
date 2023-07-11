@@ -20,6 +20,7 @@
 #include <string.h>
 #include <soc.h>
 
+
 /**
  * @brief Perform basic hardware initialization at boot.
  *
@@ -44,17 +45,20 @@ static int bluenrg_init(const struct device *arg)
 	irq_unlock(key);
 	
 	/* enable clock */
-	// LL_Power à ajouter (pour le sleep mode donc pas obligé)
-	// BEGIN of SystemInit() 
+	// LL_Power à ajouter (pour le sleep mode donc pas obligé mtn)
+	// // BEGIN of SystemInit() 
 	LL_PWR_EnableRAMBankRet(LL_PWR_RAMRET_1);
 	// BEGIN of SmpsTrimConfig() 
 	SystemReadyWait(200, LL_PWR_IsSMPSReady, 1);
+	/* Config HW SMPS 10uH */
 	LL_PWR_SetSMPSBOM(LL_PWR_SMPS_BOM3);
-	
+	/* SMPS Clock 4Mhz configuration */
+	LL_RCC_SetSMPSPrescaler(LL_RCC_SMPS_DIV_4);
+
 	uint32_t main_regulator, smps_out_voltage, lsi_bw, hsi_calib, lsi_lpmu;
 	uint8_t eng_lsi_bw_flag;
 	
-	//  /* Retrieve Trimming values from engineering flash locations */
+	/* Retrieve Trimming values from engineering flash locations */
 	if (*(volatile uint32_t*) 0x10001EF8 == 0xFCBCECCC) {
 		main_regulator    = ((*(volatile uint32_t*)0x10001EE4) & (0x0F << 0)) >> 0;
 		smps_out_voltage  = ((*(volatile uint32_t*)0x10001EE4) & (0x07 << 4)) >> 4;
@@ -88,11 +92,7 @@ static int bluenrg_init(const struct device *arg)
 	LL_PWR_SetSMPSTrim(smps_out_voltage);
 	
 	/* Set SMPS in LP Open */
-	LL_PWR_SetSMPSOpenMode(0x100UL);
-	
-	/* No SMPS configuration */
-	LL_PWR_SetSMPSMode(0x400UL);
-	
+	LL_PWR_SetSMPSOpenMode(LL_PWR_SMPS_LPOPEN);	
 	//END SmpsTrimConfig() function
 	
 	// BEGIN LSConfig()
@@ -117,13 +117,13 @@ static int bluenrg_init(const struct device *arg)
 
 	// Set current and capacitors for High Speed Crystal Oscillator
 	LL_RCC_HSE_SetCapacitorTuning(32); //centrer crystal
-	LL_RCC_HSE_SetCurrentControl((0x2U << (4UL) | 0x1U << (4UL))); // LL_RCC_HSE_CURRENTMAX_3 : (RCC_RFSWHSECR_GMC_1| RCC_RFSWHSECR_GMC_0) : (0x2U << (4UL) | 0x1U << (4UL))
+	LL_RCC_HSE_SetCurrentControl(LL_RCC_HSE_CURRENTMAX_3); // LL_RCC_HSE_CURRENTMAX_3 : (RCC_RFSWHSECR_GMC_1| RCC_RFSWHSECR_GMC_0) : (0x2U << (4UL) | 0x1U << (4UL))
 
 	// BEGIN SystemClockConfig()
 	//SystemTimer_TimeoutConfig(32000000, 100, TRUE);
 	LL_RCC_HSE_Enable();
 	SystemReadyWait(100, LL_RCC_HSE_IsReady, 1);
-	LL_RCC_SetRC64MPLLPrescaler((0x4U) << (5UL)); // RCC 16Mhz
+	LL_RCC_SetRC64MPLLPrescaler(LL_RCC_RC64MPLL_DIV_4); // RCC 16Mhz : (0x4U) << (5UL)
 	LL_RCC_RC64MPLL_Enable();
 	if(SystemReadyWait(200, LL_RCC_RC64MPLL_IsReady, 1) == 0U);
 	else { // DIRECT HSE configuration
@@ -138,26 +138,30 @@ static int bluenrg_init(const struct device *arg)
 	}
 	// END SystemClockConfig()
 
-	
-	// BEGIN Configure_GPIO()
-	LL_AHB_EnableClock(0x4UL);
-	LL_AHB_EnableClock(LL_AHB_PERIPH_GPIOB);
-	LL_APB0_EnableClock(0x100UL);
-	LL_APB1_EnableClock(0x400UL);
+	/* Set Systick to 1ms using system clock frequency */
+	LL_InitTick(SystemCoreClock, 1000);
 
-	/* Configure IO in output */
-	LL_GPIO_SetPinMode(GPIOB, LL_GPIO_PIN_8, LL_GPIO_MODE_OUTPUT);
-	/* Reset value is LL_GPIO_OUTPUT_PUSHPULL */
-	LL_GPIO_SetPinOutputType(GPIOB, LL_GPIO_PIN_8, LL_GPIO_OUTPUT_PUSHPULL);
-	/* Reset value is LL_GPIO_SPEED_FREQ_LOW */
-	LL_GPIO_SetPinSpeed(GPIOB, LL_GPIO_PIN_8, LL_GPIO_SPEED_FREQ_LOW);
-	/* Reset value is LL_GPIO_PULL_NO */
-	LL_GPIO_SetPinPull(GPIOB, LL_GPIO_PIN_8, LL_GPIO_PULL_NO);
+	// BEGIN Configure_GPIO()
+	// LL_AHB_EnableClock(0x4UL);
+	// LL_AHB_EnableClock(LL_AHB_PERIPH_GPIOB);
+	// LL_APB0_EnableClock(0x100UL);
+	// LL_APB1_EnableClock(0x400UL);
+
+	// /* Configure IO in output */
+	// LL_GPIO_SetPinMode(GPIOB, LL_GPIO_PIN_8, LL_GPIO_MODE_OUTPUT);
+	// /* Reset value is LL_GPIO_OUTPUT_PUSHPULL */
+	// LL_GPIO_SetPinOutputType(GPIOB, LL_GPIO_PIN_8, LL_GPIO_OUTPUT_PUSHPULL);
+	// /* Reset value is LL_GPIO_SPEED_FREQ_LOW */
+	// LL_GPIO_SetPinSpeed(GPIOB, LL_GPIO_PIN_8, LL_GPIO_SPEED_FREQ_LOW);
+	// /* Reset value is LL_GPIO_PULL_NO */
+	// LL_GPIO_SetPinPull(GPIOB, LL_GPIO_PIN_8, LL_GPIO_PULL_NO);
 	// END Configure_GPIO()
 
 
 	// BEGIN MX_GPIO_Init()
 	LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
+	/* LED2 GPIO CLK ENABLE */
+	LL_AHB_EnableClock(LL_AHB_PERIPH_GPIOB);
 
 	LL_GPIO_SetOutputPin(GPIOB, LL_GPIO_PIN_8);
 	GPIO_InitStruct.Pin = LL_GPIO_PIN_8;
@@ -168,10 +172,12 @@ static int bluenrg_init(const struct device *arg)
 	LL_GPIO_Init(GPIOB, &GPIO_InitStruct);	//Le problème est ici
 	// END MX_GPIO_Init()
 
+	for (unsigned int i = 0; i < 4294967295; i++);
 	LL_GPIO_TogglePin(GPIOB, LL_GPIO_PIN_8);
-
-
-
+	for (unsigned int i = 0; i < 4294967295; i++);
+	LL_GPIO_TogglePin(GPIOB, LL_GPIO_PIN_8);
+	for (unsigned int i = 0; i < 320000000; i++);
+	LL_GPIO_TogglePin(GPIOB, LL_GPIO_PIN_8);
 
 	/*
 	// Set systick clock to 1ms using system clock frequency
