@@ -14,3 +14,4 @@ config UART_BLUENRG
 	  This option enables the UART driver for BLUENRG family of
 	  processors.
 	  Say y if you wish to use serial port on BLUENRG MCU.
+

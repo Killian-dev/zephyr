@@ -1,23 +1,22 @@
 
-#include <zephyr/dt-bindings/pinctrl/stm32-pinctrl.h>
+//#include <zephyr/dt-bindings/pinctrl/stm32-pinctrl.h>
 
-/ {
-	soc {
-		pinctrl: pin-controller@48000000 {
+// / {
+// 	soc {
+// 		pinctrl: pin-controller@48000000 {
+// 			/* UART_RX / USART_RX / LPUART_RX */
 
-			/* UART_RX / USART_RX / LPUART_RX */
-
-			/omit-if-no-ref/ usart_rx_pa8: usart_rx_pa8 {
-				pinmux = <STM32_PINMUX('A', 8, AF0)>;
-			};
+// 			/omit-if-no-ref/ usart_rx_pa8: usart_rx_pa8 {
+// 				pinmux = <STM32_PINMUX('A', 8, AF0)>;
+// 			};
         
 
-            /* UART_TX / USART_TX / LPUART_TX */
+//             /* UART_TX / USART_TX / LPUART_TX */
 
-            /omit-if-no-ref/ usart_tx_pa9: usart_tx_pa9 {
-                pinmux = <STM32_PINMUX('A', 9, AF0)>;
-                bias-pull-up;
-            };
-        };
-    };
-};
+//             /omit-if-no-ref/ usart_tx_pa9: usart_tx_pa9 {
+//                 pinmux = <STM32_PINMUX('A', 9, AF0)>;
+//                 bias-pull-up;
+//             };
+//         };
+//     };
+// };

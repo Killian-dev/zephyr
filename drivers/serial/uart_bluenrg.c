@@ -25,7 +25,6 @@
 #include <zephyr/drivers/clock_control.h>
 #include <zephyr/drivers/reset.h>
 
-
 #include <zephyr/linker/sections.h>
 //#include <zephyr/drivers/clock_control/bluenrg_clock_control.h>
 #include "uart_bluenrg.h"
@@ -40,8 +39,6 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/irq.h>
 LOG_MODULE_REGISTER(uart_bluenrg, CONFIG_UART_LOG_LEVEL);
-
-
 
 static int uart_bluenrg_poll_in(const struct device *dev, unsigned char *c)
 {

@@ -39,7 +39,7 @@
     // clocks {
     //     clk_hse: clk-hse {
     //         #clock-cells = <0>;
-    //         compatible = "st,bluenrg-hse-clock";
+    //         compatible = "st,stm32-hse-clock";
     //         status = "disabled";
     //     };
 
@@ -52,7 +52,7 @@
 
     //     clk_lse: clk-lse {
     //         #clock-cells = <0>;
-    //         compatible = "st,bluenrg-lse-clock";
+    //         compatible = "st,stm32-lse-clock";
     //         clock-frequency = <32768>;
     //         driving-capability = <0>;
     //         status = "disabled";
@@ -67,7 +67,7 @@
 
     //     pll: pll {
     //         #clock-cells = <0>;
-    //         compatible = "st,bluenrg_lp-pll-clock";
+    //         compatible = "st,stm32-pll-clock";
     //         status = "disabled";
     //     };
     // };
@@ -75,8 +75,7 @@
     soc {
         // interrupt, address et size-cells à vérifier
         flash: flash-controller@40001000 {
-            compatible = "st,bluenrg_lp-flash-controller";
-            label = "FLASH_CTRL";
+            compatible = "st,stm32-flash-controller";
             reg = <0x40001000 DT_SIZE_K(4)>;
             interrupts = <1 0>;
             #address-cells = <1>;
@@ -88,52 +87,53 @@
             };
         };
 
-        //rcc : ok
+        // //rcc : ok
         // rcc: rcc@48400000 {
-        //     compatible = "st,bluenrg_lp-rcc";
+        //     compatible = "st,stm32-rcc";
         //     #clock-cells = <2>;
         //     reg = <0x48400000 0x9C>;
         //     //label = "BLUENRG_LP_CLK_RCC";
         // };
 
-        // // pincrtl : add & size à vérif
+        // pincrtl : add & size à vérif
         // pinctrl: pin-controller@48000000 {
-        //     compatible = "st,bluenrg_lp-pinctrl";
+        //     compatible = "st,stm32-pinctrl";
         //     #address-cells = <1>;
         //     #size-cells = <1>;
         //     reg = <0x48000000 DT_SIZE_K(2)>;
 
         //     // gpioa : cells à vérif
         //     gpioa: gpio@48000000 {
-        //         compatible = "st,bluenrg_lp-gpio";
+        //         compatible = "st,stm32-gpio";
         //         gpio-controller;
         //         #gpio-cells = <2>;
         //         reg = <0x48000000 DT_SIZE_K(1)>;
         //         //clocks = <&rcc BLUENRG_LP_CLOCK_PERIPH_GPIO 0x00000001>;
-        //         label = "GPIOA";
 		// 		clocks = <&rcc 0x0D 0x00000001>; // à modifier
         //     };
         //     // gpiob : cells à vérif
         //     gpiob: gpio@48100000 {
-        //         compatible = "st,bluenrg_lp-gpio";
+        //         compatible = "st,stm32-gpio";
         //         gpio-controller;
         //         #gpio-cells = <2>;
         //         reg = <0x48100000 DT_SIZE_K(1)>;
         //         //clocks = <&rcc BLUENRG_LP_CLOCK_PERIPH_GPIO 0x00000002>;
-        //         label = "GPIOB";
+        //         clocks = <&rcc 0x0D 0x00000001>; // à modifier
         //     };
         // };
-        
-        // // interrupt & clocks à vérif
-        // usart1: serial@41004000 {
-        //     compatible = "st,bluenrg_lp-uart";
-        //     reg = <0x41004000 DT_SIZE_K(1)>;
-        //     //clocks = <&rcc BLUENRG_LP_CLOCK_PERIPH_USART 0x00020000>;
-        //     //clocks = <&rcc STM32_CLOCK_BUS_APB1 0x00020000>;
-        //     interrupts = <8 0>;
-        //     status = "disabled";
-        //     label = "USART1";
-        // };
+
+    
+        // interrupt & clocks à vérif
+        usart1: serial@41004000 {
+            // compatible = "st,stm32-usart", "st,stm32-uart";
+            compatible = "st,bluenrg_lp-uart";
+            reg = <0x41004000 DT_SIZE_K(1)>;
+            //clocks = <&rcc BLUENRG_LP_CLOCK_PERIPH_USART 0x00020000>;
+            // resets = <&rctl STM32_RESET(APB1, 17U)>;
+			//clocks = <&rcc 0x038 0x00020000>; // STM32_CLOCK_BUS_APB1
+            interrupts = <8 0>;
+            //status = "disabled";
+        };
 
         // // adc1 : clocks & io-channel à vérif
         // adc1: adc@41006000 {
