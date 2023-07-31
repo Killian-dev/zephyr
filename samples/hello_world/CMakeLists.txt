@@ -7,4 +7,4 @@ project(hello_world)
 
 target_sources(app PRIVATE src/main.c)
 
-include_directories(modules/hal/st_bluenrg/bluenrg_family/bluenrglp/drivers/include/rf_driver_ll_rcc.h)
+#include_directories(modules/hal/st_bluenrg/bluenrg_family/bluenrglp/drivers/include/rf_driver_ll_rcc.h)

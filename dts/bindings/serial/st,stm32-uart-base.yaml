@@ -10,14 +10,14 @@ properties:
     reg:
       required: true
 
-    # clocks:
-    #   required: true
+    clocks:
+      required: true
 
-    # resets:
-    #   required: true
+    resets:
+      required: true
 
-    # interrupts:
-    #   required: true
+    interrupts:
+      required: true
 
     single-wire:
       type: boolean
@@ -44,11 +44,11 @@ properties:
         Invert the binary logic of rx pin. When enabled, physical logic levels are inverted and
         we use 1=Low, 0=High instead of 1=High, 0=Low.
 
-    # pinctrl-0:
-    #   required: true
+    pinctrl-0:
+      required: true
 
-    # pinctrl-names:
-    #   required: true
+    pinctrl-names:
+      required: true
 
     wakeup-line:
       type: int

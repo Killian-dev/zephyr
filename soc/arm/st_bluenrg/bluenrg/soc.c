@@ -143,19 +143,19 @@ static int bluenrg_init(const struct device *arg)
 	LL_InitTick(SystemCoreClock, 1000);
 
 	// BEGIN Configure_GPIO()
-	// LL_AHB_EnableClock(0x4UL);
-	// LL_AHB_EnableClock(LL_AHB_PERIPH_GPIOB);
-	// LL_APB0_EnableClock(0x100UL);
-	// LL_APB1_EnableClock(0x400UL);
+	LL_AHB_EnableClock(0x4UL);
+	LL_AHB_EnableClock(LL_AHB_PERIPH_GPIOB);
+	LL_APB0_EnableClock(0x100UL);
+	LL_APB1_EnableClock(0x400UL);
 
-	// /* Configure IO in output */
-	// LL_GPIO_SetPinMode(GPIOB, LL_GPIO_PIN_8, LL_GPIO_MODE_OUTPUT);
-	// /* Reset value is LL_GPIO_OUTPUT_PUSHPULL */
-	// LL_GPIO_SetPinOutputType(GPIOB, LL_GPIO_PIN_8, LL_GPIO_OUTPUT_PUSHPULL);
-	// /* Reset value is LL_GPIO_SPEED_FREQ_LOW */
-	// LL_GPIO_SetPinSpeed(GPIOB, LL_GPIO_PIN_8, LL_GPIO_SPEED_FREQ_LOW);
-	// /* Reset value is LL_GPIO_PULL_NO */
-	// LL_GPIO_SetPinPull(GPIOB, LL_GPIO_PIN_8, LL_GPIO_PULL_NO);
+	/* Configure IO in output */
+	LL_GPIO_SetPinMode(GPIOB, LL_GPIO_PIN_8, LL_GPIO_MODE_OUTPUT);
+	/* Reset value is LL_GPIO_OUTPUT_PUSHPULL */
+	LL_GPIO_SetPinOutputType(GPIOB, LL_GPIO_PIN_8, LL_GPIO_OUTPUT_PUSHPULL);
+	/* Reset value is LL_GPIO_SPEED_FREQ_LOW */
+	LL_GPIO_SetPinSpeed(GPIOB, LL_GPIO_PIN_8, LL_GPIO_SPEED_FREQ_LOW);
+	/* Reset value is LL_GPIO_PULL_NO */
+	LL_GPIO_SetPinPull(GPIOB, LL_GPIO_PIN_8, LL_GPIO_PULL_NO);
 	// END Configure_GPIO()
 
 
@@ -217,34 +217,34 @@ static int bluenrg_init(const struct device *arg)
 	while((!(LL_USART_IsActiveFlag_TEACK(USART1))) || (!(LL_USART_IsActiveFlag_REACK(USART1))))
 	{ 
 	}
-	// END MX_USART_UART_Init()
+	// // END MX_USART_UART_Init()
 
-	uint8_t ubSend = 0;
-	const uint8_t aStringToSend[] = "USART TEST \n\r";
-	while (ubSend < sizeof(aStringToSend))
-	{
-		/* Wait for TXE flag to be raised */
-		while (!LL_USART_IsActiveFlag_TXE(USART1))
-		{
-		}
+	// uint8_t ubSend = 0;
+	// const uint8_t aStringToSend[] = "USART TEST \n\r";
+	// while (ubSend < sizeof(aStringToSend))
+	// {
+	// 	/* Wait for TXE flag to be raised */
+	// 	while (!LL_USART_IsActiveFlag_TXE(USART1))
+	// 	{
+	// 	}
 
-		/* If last char to be sent, clear TC flag */
-		if (ubSend == (sizeof(aStringToSend) - 1))
-		{
-		LL_USART_ClearFlag_TC(USART1); 
-		}
+	// 	/* If last char to be sent, clear TC flag */
+	// 	if (ubSend == (sizeof(aStringToSend) - 1))
+	// 	{
+	// 	LL_USART_ClearFlag_TC(USART1); 
+	// 	}
 
-		/* Write character in Transmit Data register.
-		TXE flag is cleared by writing data in TDR register */
-		LL_USART_TransmitData8(USART1, aStringToSend[ubSend++]);
-	}
+	// 	/* Write character in Transmit Data register.
+	// 	TXE flag is cleared by writing data in TDR register */
+	// 	LL_USART_TransmitData8(USART1, aStringToSend[ubSend++]);
+	// }
 
-	/* Wait for TC flag to be raised for last char */
-	while (!LL_USART_IsActiveFlag_TC(USART1))
-	{
-	}
+	// /* Wait for TC flag to be raised for last char */
+	// while (!LL_USART_IsActiveFlag_TC(USART1))
+	// {
+	// }
 
-	LL_GPIO_TogglePin(GPIOB, LL_GPIO_PIN_8);
+	// LL_GPIO_TogglePin(GPIOB, LL_GPIO_PIN_8);
 
 	/*
 	// Set systick clock to 1ms using system clock frequency

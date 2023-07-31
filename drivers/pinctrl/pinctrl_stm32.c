@@ -10,9 +10,15 @@
 #include <zephyr/drivers/pinctrl.h>
 #include <gpio/gpio_stm32.h>
 
+#if !(defined CONFIG_SOC_SERIES_BLUENRG)
 #include <stm32_ll_bus.h>
 #include <stm32_ll_gpio.h>
 #include <stm32_ll_system.h>
+#else
+#include <rf_driver_ll_bus.h>
+#include <rf_driver_ll_gpio.h>
+#include <rf_driver_ll_system.h>
+#endif
 
 /**
  * @brief Array containing pointers to each GPIO port.

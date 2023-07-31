@@ -34,8 +34,13 @@
 #include <zephyr/drivers/clock_control/stm32_clock_control.h>
 #include "uart_stm32.h"
 
+#if defined(CONFIG_SOC_SERIES_BLUENRG)
+#include <rf_driver_ll_usart.h>
+#else
 #include <stm32_ll_usart.h>
 #include <stm32_ll_lpuart.h>
+#endif
+
 #if defined(CONFIG_PM) && defined(IS_UART_WAKEUP_FROMSTOP_INSTANCE)
 #include <stm32_ll_exti.h>
 #endif /* CONFIG_PM */
@@ -113,21 +118,21 @@ static inline void uart_stm32_set_baudrate(const struct device *dev, uint32_t ba
 	uint32_t clock_rate;
 
 	/* Get clock rate */
-	if (IS_ENABLED(STM32_UART_DOMAIN_CLOCK_SUPPORT) && (config->pclk_len > 1)) {
-		if (clock_control_get_rate(data->clock,
-					   (clock_control_subsys_t)&config->pclken[1],
-					   &clock_rate) < 0) {
-			LOG_ERR("Failed call clock_control_get_rate(pclken[1])");
-			return;
-		}
-	} else {
-		if (clock_control_get_rate(data->clock,
-					   (clock_control_subsys_t)&config->pclken[0],
-					   &clock_rate) < 0) {
-			LOG_ERR("Failed call clock_control_get_rate(pclken[0])");
-			return;
-		}
-	}
+	// if (IS_ENABLED(STM32_UART_DOMAIN_CLOCK_SUPPORT) && (config->pclk_len > 1)) {
+	// 	if (clock_control_get_rate(data->clock,
+	// 				   (clock_control_subsys_t)&config->pclken[1],
+	// 				   &clock_rate) < 0) {
+	// 		LOG_ERR("Failed call clock_control_get_rate(pclken[1])");
+	// 		return;
+	// 	}
+	// } else {
+	// 	if (clock_control_get_rate(data->clock,
+	// 				   (clock_control_subsys_t)&config->pclken[0],
+	// 				   &clock_rate) < 0) {
+	// 		LOG_ERR("Failed call clock_control_get_rate(pclken[0])");
+	// 		return;
+	// 	}
+	// }
 
 #if HAS_LPUART_1
 	if (IS_LPUART_INSTANCE(config->usart)) {
@@ -178,7 +183,10 @@ static inline void uart_stm32_set_baudrate(const struct device *dev, uint32_t ba
 					 LL_USART_OVERSAMPLING_16);
 #endif
 		LL_USART_SetBaudRate(config->usart,
+#if !defined(CONFIG_SOC_SERIES_BLUENRG)
 				     clock_rate,
+#endif
+
 #ifdef USART_PRESC_PRESCALER
 				     LL_USART_PRESCALER_DIV1,
 #endif
@@ -1587,37 +1595,37 @@ static int uart_stm32_init(const struct device *dev)
 	struct uart_stm32_data *data = dev->data;
 	uint32_t ll_parity;
 	uint32_t ll_datawidth;
-	int err;
+	// int err;
 
-	__uart_stm32_get_clock(dev);
+	// __uart_stm32_get_clock(dev);
 
-	if (!device_is_ready(data->clock)) {
-		LOG_ERR("clock control device not ready");
-		return -ENODEV;
-	}
+	// if (!device_is_ready(data->clock)) {
+	// 	LOG_ERR("clock control device not ready");
+	// 	return -ENODEV;
+	// }
 
-	/* enable clock */
-	err = clock_control_on(data->clock, (clock_control_subsys_t)&config->pclken[0]);
-	if (err != 0) {
-		LOG_ERR("Could not enable (LP)UART clock");
-		return err;
-	}
+	// /* enable clock */
+	// err = clock_control_on(data->clock, (clock_control_subsys_t)&config->pclken[0]);
+	// if (err != 0) {
+	// 	LOG_ERR("Could not enable (LP)UART clock");
+	// 	return err;
+	// }
 
-	if (IS_ENABLED(STM32_UART_DOMAIN_CLOCK_SUPPORT) && (config->pclk_len > 1)) {
-		err = clock_control_configure(DEVICE_DT_GET(STM32_CLOCK_CONTROL_NODE),
-					      (clock_control_subsys_t) &config->pclken[1],
-					      NULL);
-		if (err != 0) {
-			LOG_ERR("Could not select UART domain clock");
-			return err;
-		}
-	}
+	// if (IS_ENABLED(STM32_UART_DOMAIN_CLOCK_SUPPORT) && (config->pclk_len > 1)) {
+	// 	err = clock_control_configure(DEVICE_DT_GET(STM32_CLOCK_CONTROL_NODE),
+	// 				      (clock_control_subsys_t) &config->pclken[1],
+	// 				      NULL);
+	// 	if (err != 0) {
+	// 		LOG_ERR("Could not select UART domain clock");
+	// 		return err;
+	// 	}
+	// }
 
-	/* Configure dt provided device signals when available */
-	err = pinctrl_apply_state(config->pcfg, PINCTRL_STATE_DEFAULT);
-	if (err < 0) {
-		return err;
-	}
+	// /* Configure dt provided device signals when available */
+	// err = pinctrl_apply_state(config->pcfg, PINCTRL_STATE_DEFAULT);
+	// if (err < 0) {
+	// 	return err;
+	// }
 
 	LL_USART_Disable(config->usart);
 

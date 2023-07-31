@@ -12,10 +12,11 @@
 #ifndef ZEPHYR_DRIVERS_SERIAL_UART_STM32_H_
 #define ZEPHYR_DRIVERS_SERIAL_UART_STM32_H_
 
-//#include <zephyr/drivers/pinctrl.h>
+#include <zephyr/drivers/pinctrl.h>
 
-#include <stm32_ll_usart.h>
+// #include <stm32_ll_usart.h>
 #include <rf_driver_ll_usart.h>
+
 
 #define STM32_EXTI_LINE_NONE	0xFFFFFFFFU
 

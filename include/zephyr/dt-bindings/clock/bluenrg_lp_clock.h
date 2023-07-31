@@ -7,16 +7,18 @@
 #define ZEPHYR_INCLUDE_DT_BINDINGS_CLOCK_BLUENRG_CLOCK_H_
 
 /** Bus gatting clocks */
-// #define BLUENRG_CLOCK_BUS_IOP     0x02c
-// #define BLUENRG_CLOCK_BUS_AHB1    0x030
-// #define BLUENRG_CLOCK_BUS_APB2    0x034
-// #define BLUENRG_CLOCK_BUS_APB1    0x038
+#define BLUENRG_CLOCK_BUS_AHB0    0x030
+#define BLUENRG_CLOCK_BUS_APB0    0x034
+#define BLUENRG_CLOCK_BUS_APB1    0x058
+#define BLUENRG_CLOCK_BUS_APB2    0x060
 
-// #define BLUENRG_PERIPH_BUS_MIN	BLUENRG_CLOCK_BUS_IOP
-// #define BLUENRG_PERIPH_BUS_MAX	BLUENRG_CLOCK_BUS_APB1
+#define BLUENRG_PERIPH_BUS_MIN	BLUENRG_CLOCK_BUS_APB2
+#define BLUENRG_PERIPH_BUS_MAX	BLUENRG_CLOCK_BUS_APB0
+
+// La suite est à modifier
 
 // /** Domain clocks */
-// /* RM0367, §7.3.20 Clock configuration register (RCC_CCIPR) */
+// /* RM0479, §7.3.20 Clock configuration register (RCC_CCIPR) */
 
 // /** Fixed clocks  */
 // #define BLUENRG_SRC_HSE		0x001
