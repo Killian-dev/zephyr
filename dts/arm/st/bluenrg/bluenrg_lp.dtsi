@@ -75,7 +75,7 @@
     };
 
     soc {
-        // interrupt, address et size-cells à vérifier
+        // flash
         flash: flash-controller@40001000 {
             compatible = "st,stm32-flash-controller";
             reg = <0x40001000 DT_SIZE_K(4)>;
@@ -83,13 +83,13 @@
             #address-cells = <1>;
             #size-cells = <1>;
         
-            // flash0 : ok
+            // flash0 
             flash0: flash@10040000 {
                 reg = <0x10040000 DT_SIZE_K(256)>;
             };
         };
 
-        //rcc : ok
+        //rcc 
         rcc: rcc@48400000 {
             compatible = "st,stm32-rcc"; 
             #clock-cells = <2>;
@@ -137,6 +137,7 @@
             clocks = <&rcc BLUENRG_CLOCK_BUS_APB1 0x00020000>;  //bluenrg_lp_clock.h
             resets = <&rctl STM32_RESET(APB1, 10U)>;            // p73/515 RM0479
             interrupts = <8 0>;
+            //wakeup-source;
             status = "disabled";
         };
 
