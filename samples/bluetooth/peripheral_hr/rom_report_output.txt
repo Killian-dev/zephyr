@@ -1,0 +1,1303 @@
+-- west build: running target rom_report
+[0/1] cd /local/home/lerayk/zephyrproject/zephyr/samples/bluetooth/peripheral_hr/build && /local/home/lerayk/zephyrproject/.venv/bin/python3 /local/home/lerayk/zephyrproject/zephyr/scripts/footprint/size_report -k /local/home/lerayk/zephyrproject/zephyr/samples/bluetooth/peripheral_hr/build/zephyr/zephyr.elf -z /local/home/lerayk/zephyrproject/zephyr -o /local/home/lerayk/zephyrproject/zephyr/samples/bluetooth/peripheral_hr/build --workspace=/local/home/lerayk/zephyrproject -d 99 rom
+Path                                                                                             Size    %  
+==============================================================================================================
+Root                                                                                            92994 100.00%
+├── (hidden)                                                                                     9203   9.90%
+├── (no paths)                                                                                   4934   5.31%
+│   ├── AHBPrescTable                                                                              64   0.07%
+│   ├── CSWTCH.1047                                                                                 6   0.01%
+│   ├── CSWTCH.11197                                                                               24   0.03%
+│   ├── CSWTCH.13076                                                                               15   0.02%
+│   ├── CSWTCH.13078                                                                                9   0.01%
+│   ├── CSWTCH.13081                                                                                8   0.01%
+│   ├── CSWTCH.16167                                                                                3   0.00%
+│   ├── CSWTCH.16200                                                                               42   0.05%
+│   ├── CSWTCH.6053                                                                                36   0.04%
+│   ├── CSWTCH.610                                                                                 20   0.02%
+│   ├── MSIRangeTable                                                                              64   0.07%
+│   ├── SystemCoreClock                                                                             4   0.00%
+│   ├── __aeabi_idiv0                                                                               2   0.00%
+│   ├── __compound_literal.0                                                                       16   0.02%
+│   ├── __compound_literal.1                                                                       17   0.02%
+│   ├── __compound_literal.10                                                                      12   0.01%
+│   ├── __compound_literal.11                                                                       8   0.01%
+│   ├── __compound_literal.12                                                                      12   0.01%
+│   ├── __compound_literal.13                                                                       8   0.01%
+│   ├── __compound_literal.14                                                                      12   0.01%
+│   ├── __compound_literal.15                                                                       8   0.01%
+│   ├── __compound_literal.16                                                                       4   0.00%
+│   ├── __compound_literal.17                                                                       4   0.00%
+│   ├── __compound_literal.18                                                                       8   0.01%
+│   ├── __compound_literal.19                                                                       4   0.00%
+│   ├── __compound_literal.2                                                                       16   0.02%
+│   ├── __compound_literal.20                                                                       4   0.00%
+│   ├── __compound_literal.21                                                                       4   0.00%
+│   ├── __compound_literal.22                                                                       4   0.00%
+│   ├── __compound_literal.23                                                                       8   0.01%
+│   ├── __compound_literal.24                                                                       4   0.00%
+│   ├── __compound_literal.25                                                                       4   0.00%
+│   ├── __compound_literal.26                                                                       4   0.00%
+│   ├── __compound_literal.27                                                                       8   0.01%
+│   ├── __compound_literal.28                                                                       4   0.00%
+│   ├── __compound_literal.3                                                                       22   0.02%
+│   ├── __compound_literal.4                                                                       32   0.03%
+│   ├── __compound_literal.5                                                                       16   0.02%
+│   ├── __compound_literal.6                                                                       16   0.02%
+│   ├── __compound_literal.7                                                                       80   0.09%
+│   ├── __compound_literal.8                                                                       20   0.02%
+│   ├── __compound_literal.9                                                                       12   0.01%
+│   ├── __device_dts_ord_31                                                                        24   0.03%
+│   ├── __device_dts_ord_33                                                                        24   0.03%
+│   ├── __device_dts_ord_37                                                                        24   0.03%
+│   ├── __device_dts_ord_50                                                                        24   0.03%
+│   ├── __device_dts_ord_57                                                                        24   0.03%
+│   ├── __device_dts_ord_58                                                                        24   0.03%
+│   ├── __device_dts_ord_61                                                                        24   0.03%
+│   ├── __device_dts_ord_8                                                                         24   0.03%
+│   ├── __device_dts_ord_84                                                                        24   0.03%
+│   ├── __device_dts_ord_85                                                                        24   0.03%
+│   ├── __device_dts_ord_86                                                                        24   0.03%
+│   ├── __func__.0                                                                                259   0.28%
+│   ├── __func__.1                                                                                242   0.26%
+│   ├── __func__.10                                                                                72   0.08%
+│   ├── __func__.11                                                                                36   0.04%
+│   ├── __func__.12                                                                                41   0.04%
+│   ├── __func__.13                                                                                32   0.03%
+│   ├── __func__.14                                                                                32   0.03%
+│   ├── __func__.15                                                                                35   0.04%
+│   ├── __func__.16                                                                                40   0.04%
+│   ├── __func__.17                                                                                41   0.04%
+│   ├── __func__.18                                                                                48   0.05%
+│   ├── __func__.19                                                                                31   0.03%
+│   ├── __func__.2                                                                                114   0.12%
+│   ├── __func__.20                                                                                22   0.02%
+│   ├── __func__.21                                                                                16   0.02%
+│   ├── __func__.22                                                                                32   0.03%
+│   ├── __func__.23                                                                                 8   0.01%
+│   ├── __func__.24                                                                                62   0.07%
+│   ├── __func__.25                                                                                23   0.02%
+│   ├── __func__.26                                                                                38   0.04%
+│   ├── __func__.27                                                                                35   0.04%
+│   ├── __func__.28                                                                                26   0.03%
+│   ├── __func__.29                                                                                19   0.02%
+│   ├── __func__.3                                                                                118   0.13%
+│   ├── __func__.30                                                                                29   0.03%
+│   ├── __func__.31                                                                                28   0.03%
+│   ├── __func__.32                                                                                21   0.02%
+│   ├── __func__.33                                                                                16   0.02%
+│   ├── __func__.34                                                                                25   0.03%
+│   ├── __func__.35                                                                                 8   0.01%
+│   ├── __func__.36                                                                                 9   0.01%
+│   ├── __func__.4                                                                                149   0.16%
+│   ├── __func__.5                                                                                 93   0.10%
+│   ├── __func__.6                                                                                119   0.13%
+│   ├── __func__.7                                                                                 59   0.06%
+│   ├── __func__.8                                                                                 62   0.07%
+│   ├── __func__.9                                                                                 70   0.08%
+│   ├── __udivmoddi4                                                                              672   0.72%
+│   ├── _sw_isr_table                                                                             504   0.54%
+│   ├── att_exec_write_req                                                                          4   0.00%
+│   ├── bt_addr_any                                                                                 6   0.01%
+│   ├── bt_addr_le_any                                                                              7   0.01%
+│   ├── bt_addr_le_none                                                                             7   0.01%
+│   ├── bt_addr_none                                                                                6   0.01%
+│   ├── bt_dev                                                                                    352   0.38%
+│   ├── bt_smp_sign                                                                                 6   0.01%
+│   ├── events.4                                                                                   60   0.06%
+│   ├── heartrate.0                                                                                 1   0.00%
+│   ├── hex.4                                                                                      17   0.02%
+│   ├── k_work_delayable_busy_get                                                                   4   0.00%
+│   ├── l2cap_disconnected                                                                          2   0.00%
+│   ├── levels.0                                                                                   24   0.03%
+│   ├── mpu_config                                                                                  8   0.01%
+│   ├── net_buf_fixed_cb                                                                           12   0.01%
+│   ├── ops.21                                                                                     40   0.04%
+│   ├── ops.3                                                                                      40   0.04%
+│   ├── ops.5                                                                                      40   0.04%
+│   ├── postfix.0                                                                                  28   0.03%
+│   ├── prefix.1                                                                                   12   0.01%
+│   ├── pub_key_cb.1                                                                                8   0.01%
+│   ├── salt.0                                                                                     16   0.02%
+│   ├── smp_security_request                                                                        4   0.00%
+│   ├── smp_signing_info                                                                            4   0.00%
+│   └── wait_q.0                                                                                    8   0.01%
+├── WORKSPACE                                                                                    5502   5.92%
+│   └── modules                                                                                  5502   5.92%
+│       ├── crypto                                                                               3450   3.71%
+│       │   └── tinycrypt                                                                        3450   3.71%
+│       │       └── lib                                                                          3450   3.71%
+│       │           └── source                                                                   3450   3.71%
+│       │               ├── aes_encrypt.c                                                         998   1.07%
+│       │               │   ├── add_round_key                                                     138   0.15%
+│       │               │   ├── mult_row_column                                                   130   0.14%
+│       │               │   ├── sbox                                                              256   0.28%
+│       │               │   ├── shift_rows                                                        114   0.12%
+│       │               │   ├── sub_bytes                                                          24   0.03%
+│       │               │   ├── tc_aes128_set_encrypt_key                                         164   0.18%
+│       │               │   └── tc_aes_encrypt                                                    172   0.18%
+│       │               ├── cmac_mode.c                                                           506   0.54%
+│       │               │   ├── gf_double                                                          42   0.05%
+│       │               │   ├── tc_cmac_erase                                                      16   0.02%
+│       │               │   ├── tc_cmac_final                                                     106   0.11%
+│       │               │   ├── tc_cmac_init                                                       44   0.05%
+│       │               │   ├── tc_cmac_setup                                                      86   0.09%
+│       │               │   └── tc_cmac_update                                                    212   0.23%
+│       │               ├── hmac.c                                                                280   0.30%
+│       │               │   ├── rekey                                                              58   0.06%
+│       │               │   ├── tc_hmac_final                                                      80   0.09%
+│       │               │   ├── tc_hmac_init                                                       26   0.03%
+│       │               │   ├── tc_hmac_set_key                                                   104   0.11%
+│       │               │   └── tc_hmac_update                                                     12   0.01%
+│       │               ├── hmac_prng.c                                                           546   0.59%
+│       │               │   ├── tc_hmac_prng_generate                                             142   0.15%
+│       │               │   ├── tc_hmac_prng_init                                                  64   0.07%
+│       │               │   ├── tc_hmac_prng_reseed                                                50   0.05%
+│       │               │   └── update                                                            290   0.31%
+│       │               ├── sha256.c                                                             1072   1.15%
+│       │               │   ├── compress                                                          464   0.50%
+│       │               │   ├── k256                                                              256   0.28%
+│       │               │   ├── tc_sha256_final                                                   188   0.20%
+│       │               │   ├── tc_sha256_init                                                     88   0.09%
+│       │               │   └── tc_sha256_update                                                   76   0.08%
+│       │               └── utils.c                                                                48   0.05%
+│       │                   ├── _copy                                                              26   0.03%
+│       │                   ├── _double_byte                                                       18   0.02%
+│       │                   └── _set                                                                4   0.00%
+│       └── hal                                                                                  2052   2.21%
+│           └── stm32                                                                            2052   2.21%
+│               ├── lib                                                                          1644   1.77%
+│               │   └── stm32wb                                                                  1644   1.77%
+│               │       └── hci                                                                  1644   1.77%
+│               │           ├── hw_ipcc.c                                                         456   0.49%
+│               │           │   ├── HW_IPCC_BLE_Init                                               16   0.02%
+│               │           │   ├── HW_IPCC_BLE_SendAclData                                        24   0.03%
+│               │           │   ├── HW_IPCC_BLE_SendCmd                                            16   0.02%
+│               │           │   ├── HW_IPCC_Enable                                                 80   0.09%
+│               │           │   ├── HW_IPCC_Init                                                   64   0.07%
+│               │           │   ├── HW_IPCC_MM_SendFreeBuf                                         44   0.05%
+│               │           │   ├── HW_IPCC_Rx_Handler                                             72   0.08%
+│               │           │   ├── HW_IPCC_SYS_Init                                               16   0.02%
+│               │           │   ├── HW_IPCC_SYS_SendCmd                                            24   0.03%
+│               │           │   └── HW_IPCC_Tx_Handler                                            100   0.11%
+│               │           ├── shci.c                                                             54   0.06%
+│               │           │   ├── SHCI_C2_BLE_Init                                               28   0.03%
+│               │           │   └── SHCI_C2_Reinit                                                 26   0.03%
+│               │           ├── shci_tl.c                                                         382   0.41%
+│               │           │   ├── Cmd_SetStatus.constprop.0                                      24   0.03%
+│               │           │   ├── TlCmdEvtReceived                                               10   0.01%
+│               │           │   ├── TlUserEvtReceived                                              28   0.03%
+│               │           │   ├── shci_init                                                      96   0.10%
+│               │           │   ├── shci_send                                                     116   0.12%
+│               │           │   └── shci_user_evt_proc                                            108   0.12%
+│               │           ├── shci_tl_if.c                                                       20   0.02%
+│               │           │   └── shci_register_io_bus                                           20   0.02%
+│               │           ├── stm_list.c                                                        122   0.13%
+│               │           │   ├── LST_init_head                                                   6   0.01%
+│               │           │   ├── LST_insert_head                                                24   0.03%
+│               │           │   ├── LST_insert_tail                                                24   0.03%
+│               │           │   ├── LST_is_empty                                                   20   0.02%
+│               │           │   ├── LST_remove_head                                                24   0.03%
+│               │           │   └── LST_remove_node                                                24   0.03%
+│               │           └── tl_mbox.c                                                         610   0.66%
+│               │               ├── HW_IPCC_BLE_AclDataAckNot                                      12   0.01%
+│               │               ├── HW_IPCC_BLE_RxEvtNot                                           44   0.05%
+│               │               ├── HW_IPCC_SYS_CmdEvtNot                                          24   0.03%
+│               │               ├── HW_IPCC_SYS_EvtNot                                             44   0.05%
+│               │               ├── HW_IPCC_TRACES_EvtNot                                          36   0.04%
+│               │               ├── SendFreeBuf                                                    48   0.05%
+│               │               ├── TL_BLE_Init                                                    72   0.08%
+│               │               ├── TL_BLE_SendAclData                                             24   0.03%
+│               │               ├── TL_BLE_SendCmd                                                 28   0.03%
+│               │               ├── TL_Enable                                                       4   0.00%
+│               │               ├── TL_Init                                                        92   0.10%
+│               │               ├── TL_MM_EvtDone                                                  28   0.03%
+│               │               ├── TL_MM_Init                                                     64   0.07%
+│               │               ├── TL_SYS_Init                                                    60   0.06%
+│               │               ├── TL_SYS_SendCmd                                                 28   0.03%
+│               │               └── TL_TRACES_EvtReceived                                           2   0.00%
+│               └── stm32cube                                                                     408   0.44%
+│                   └── stm32wbxx                                                                 408   0.44%
+│                       └── drivers                                                               408   0.44%
+│                           ├── include                                                            24   0.03%
+│                           │   └── stm32wbxx_ll_lpuart.h                                          24   0.03%
+│                           │       └── LPUART_PRESCALER_TAB                                       24   0.03%
+│                           └── src                                                               384   0.41%
+│                               ├── stm32wbxx_hal_cortex.c                                         28   0.03%
+│                               │   └── HAL_NVIC_EnableIRQ                                         28   0.03%
+│                               ├── stm32wbxx_hal_rcc.c                                           164   0.18%
+│                               │   └── HAL_RCC_GetSysClockFreq                                   164   0.18%
+│                               └── stm32wbxx_ll_utils.c                                          192   0.21%
+│                                   └── LL_SetFlashLatency                                        192   0.21%
+└── ZEPHYR_BASE                                                                                 73355  78.88%
+    ├── arch                                                                                     2906   3.12%
+    │   └── arm                                                                                  2906   3.12%
+    │       └── core                                                                             2906   3.12%
+    │           └── aarch32                                                                      2906   3.12%
+    │               ├── cortex_m                                                                 1808   1.94%
+    │               │   ├── fault.c                                                              1740   1.87%
+    │               │   │   ├── bus_fault.constprop.0                                             372   0.40%
+    │               │   │   ├── mem_manage_fault                                                  420   0.45%
+    │               │   │   ├── usage_fault.constprop.0                                           320   0.34%
+    │               │   │   ├── z_arm_fault                                                       612   0.66%
+    │               │   │   └── z_arm_fault_init                                                   16   0.02%
+    │               │   ├── irq_init.c                                                             24   0.03%
+    │               │   │   └── z_arm_interrupt_init                                               24   0.03%
+    │               │   └── thread_abort.c                                                         44   0.05%
+    │               │       └── z_impl_k_thread_abort                                              44   0.05%
+    │               ├── fatal.c                                                                   228   0.25%
+    │               │   ├── z_arm_fatal_error                                                     220   0.24%
+    │               │   └── z_do_kernel_oops                                                        8   0.01%
+    │               ├── irq_manage.c                                                               84   0.09%
+    │               │   ├── arch_irq_enable                                                        28   0.03%
+    │               │   ├── z_arm_irq_priority_set                                                 48   0.05%
+    │               │   └── z_irq_spurious                                                          8   0.01%
+    │               ├── mpu                                                                       504   0.54%
+    │               │   ├── arm_core_mpu.c                                                         76   0.08%
+    │               │   │   ├── log_const_mpu                                                       8   0.01%
+    │               │   │   ├── static_regions                                                     12   0.01%
+    │               │   │   ├── z_arm_configure_dynamic_mpu_regions                                32   0.03%
+    │               │   │   └── z_arm_configure_static_mpu_regions                                 24   0.03%
+    │               │   └── arm_mpu.c                                                             428   0.46%
+    │               │       ├── arm_core_mpu_configure_dynamic_mpu_regions                         48   0.05%
+    │               │       ├── arm_core_mpu_configure_static_mpu_regions                          20   0.02%
+    │               │       ├── arm_core_mpu_disable                                               20   0.02%
+    │               │       ├── arm_core_mpu_enable                                                24   0.03%
+    │               │       ├── mpu_configure_regions                                             220   0.24%
+    │               │       └── z_arm_mpu_init                                                     96   0.10%
+    │               ├── nmi.c                                                                      14   0.02%
+    │               │   └── z_arm_nmi                                                              14   0.02%
+    │               ├── prep_c.c                                                                   72   0.08%
+    │               │   └── z_arm_prep_c                                                           72   0.08%
+    │               ├── swap.c                                                                     52   0.06%
+    │               │   └── arch_swap                                                              52   0.06%
+    │               └── thread.c                                                                  144   0.15%
+    │                   ├── arch_new_thread                                                        56   0.06%
+    │                   ├── arch_switch_to_main_thread                                             44   0.05%
+    │                   └── z_check_thread_stack_fail                                              44   0.05%
+    ├── drivers                                                                                  7060   7.59%
+    │   ├── bluetooth                                                                            1894   2.04%
+    │   │   └── hci                                                                              1894   2.04%
+    │   │       └── ipm_stm32wb.c                                                                1894   2.04%
+    │   │           ├── TM_AclDataAck                                                              12   0.01%
+    │   │           ├── TM_EvtReceivedCb                                                           12   0.01%
+    │   │           ├── __init__bt_ipm_init                                                         8   0.01%
+    │   │           ├── _bt_ipm_init                                                               20   0.02%
+    │   │           ├── acl_data_ack                                                               24   0.03%
+    │   │           ├── ble_sys_wait_cmd_rsp                                                       24   0.03%
+    │   │           ├── bt_get_ble_addr                                                            52   0.06%
+    │   │           ├── bt_ipm_close                                                               72   0.08%
+    │   │           ├── bt_ipm_close.part.0                                                        52   0.06%
+    │   │           ├── bt_ipm_open                                                               300   0.32%
+    │   │           ├── bt_ipm_rx_thread                                                          496   0.53%
+    │   │           ├── bt_ipm_send                                                               192   0.21%
+    │   │           ├── c2_reset                                                                  264   0.28%
+    │   │           ├── c2_started                                                                 24   0.03%
+    │   │           ├── drv                                                                        24   0.03%
+    │   │           ├── ipcc_reset                                                                 96   0.10%
+    │   │           ├── ipm_busy                                                                   24   0.03%
+    │   │           ├── ipm_rx_events_fifo                                                         24   0.03%
+    │   │           ├── log_const_hci_ipm                                                           8   0.01%
+    │   │           ├── shci_cmd_resp_release                                                      12   0.01%
+    │   │           ├── shci_cmd_resp_wait                                                         16   0.02%
+    │   │           ├── shci_notify_asynch_evt                                                      4   0.00%
+    │   │           ├── syscmd_status_not                                                           2   0.00%
+    │   │           ├── sysevt_received                                                            12   0.01%
+    │   │           └── transport_init                                                            120   0.13%
+    │   ├── clock_control                                                                         596   0.64%
+    │   │   ├── clock_stm32_ll_common.c                                                           568   0.61%
+    │   │   │   ├── __devstate_dts_ord_8                                                            2   0.00%
+    │   │   │   ├── __init___device_dts_ord_8                                                       8   0.01%
+    │   │   │   ├── stm32_clock_control_api                                                        28   0.03%
+    │   │   │   ├── stm32_clock_control_configure                                                  50   0.05%
+    │   │   │   ├── stm32_clock_control_get_subsys_rate                                            88   0.09%
+    │   │   │   ├── stm32_clock_control_init                                                      328   0.35%
+    │   │   │   ├── stm32_clock_control_off                                                        32   0.03%
+    │   │   │   └── stm32_clock_control_on                                                         32   0.03%
+    │   │   └── clock_stm32l4_l5_wb_wl.c                                                           28   0.03%
+    │   │       └── config_enable_default_clocks                                                   28   0.03%
+    │   ├── console                                                                                88   0.09%
+    │   │   └── uart_console.c                                                                     88   0.09%
+    │   │       ├── __init_uart_console_init                                                        8   0.01%
+    │   │       ├── console_out                                                                    40   0.04%
+    │   │       └── uart_console_init                                                              40   0.04%
+    │   ├── gpio                                                                                 1208   1.30%
+    │   │   └── gpio_stm32.c                                                                     1208   1.30%
+    │   │       ├── __devstate_dts_ord_31                                                           2   0.00%
+    │   │       ├── __devstate_dts_ord_33                                                           2   0.00%
+    │   │       ├── __devstate_dts_ord_37                                                           2   0.00%
+    │   │       ├── __devstate_dts_ord_84                                                           2   0.00%
+    │   │       ├── __devstate_dts_ord_85                                                           2   0.00%
+    │   │       ├── __devstate_dts_ord_86                                                           2   0.00%
+    │   │       ├── __init___device_dts_ord_31                                                      8   0.01%
+    │   │       ├── __init___device_dts_ord_33                                                      8   0.01%
+    │   │       ├── __init___device_dts_ord_37                                                      8   0.01%
+    │   │       ├── __init___device_dts_ord_84                                                      8   0.01%
+    │   │       ├── __init___device_dts_ord_85                                                      8   0.01%
+    │   │       ├── __init___device_dts_ord_86                                                      8   0.01%
+    │   │       ├── gpio_stm32_cfg_a                                                               20   0.02%
+    │   │       ├── gpio_stm32_cfg_b                                                               20   0.02%
+    │   │       ├── gpio_stm32_cfg_c                                                               20   0.02%
+    │   │       ├── gpio_stm32_cfg_d                                                               20   0.02%
+    │   │       ├── gpio_stm32_cfg_e                                                               20   0.02%
+    │   │       ├── gpio_stm32_cfg_h                                                               20   0.02%
+    │   │       ├── gpio_stm32_config                                                             114   0.12%
+    │   │       ├── gpio_stm32_configure                                                           42   0.05%
+    │   │       ├── gpio_stm32_configure_raw.isra.0                                               292   0.31%
+    │   │       ├── gpio_stm32_driver                                                              36   0.04%
+    │   │       ├── gpio_stm32_init                                                                48   0.05%
+    │   │       ├── gpio_stm32_isr                                                                 46   0.05%
+    │   │       ├── gpio_stm32_manage_callback                                                     82   0.09%
+    │   │       ├── gpio_stm32_pin_interrupt_configure                                            256   0.28%
+    │   │       ├── gpio_stm32_port_clear_bits_raw                                                 10   0.01%
+    │   │       ├── gpio_stm32_port_get_raw                                                        12   0.01%
+    │   │       ├── gpio_stm32_port_set_bits_raw                                                   10   0.01%
+    │   │       ├── gpio_stm32_port_set_masked_raw                                                 44   0.05%
+    │   │       └── gpio_stm32_port_toggle_bits                                                    36   0.04%
+    │   ├── interrupt_controller                                                                  492   0.53%
+    │   │   └── intc_exti_stm32.c                                                                 492   0.53%
+    │   │       ├── __devstate_dts_ord_50                                                           2   0.00%
+    │   │       ├── __init___device_dts_ord_50                                                      8   0.01%
+    │   │       ├── __stm32_exti_isr.isra.0                                                        64   0.07%
+    │   │       ├── __stm32_exti_isr_0                                                             10   0.01%
+    │   │       ├── __stm32_exti_isr_1                                                             10   0.01%
+    │   │       ├── __stm32_exti_isr_15_10                                                         10   0.01%
+    │   │       ├── __stm32_exti_isr_2                                                             10   0.01%
+    │   │       ├── __stm32_exti_isr_3                                                             10   0.01%
+    │   │       ├── __stm32_exti_isr_4                                                             10   0.01%
+    │   │       ├── __stm32_exti_isr_9_5                                                           10   0.01%
+    │   │       ├── exti_irq_table                                                                 16   0.02%
+    │   │       ├── stm32_exti_disable                                                             48   0.05%
+    │   │       ├── stm32_exti_enable                                                              32   0.03%
+    │   │       ├── stm32_exti_init                                                                76   0.08%
+    │   │       ├── stm32_exti_set_callback                                                        36   0.04%
+    │   │       ├── stm32_exti_trigger                                                            120   0.13%
+    │   │       └── stm32_exti_unset_callback                                                      20   0.02%
+    │   ├── pinctrl                                                                               222   0.24%
+    │   │   ├── common.c                                                                           38   0.04%
+    │   │   │   └── pinctrl_lookup_state                                                           38   0.04%
+    │   │   └── pinctrl_stm32.c                                                                   184   0.20%
+    │   │       ├── gpio_ports                                                                     44   0.05%
+    │   │       └── pinctrl_configure_pins                                                        140   0.15%
+    │   ├── reset                                                                                 146   0.16%
+    │   │   └── reset_stm32.c                                                                     146   0.16%
+    │   │       ├── __devstate_dts_ord_57                                                           2   0.00%
+    │   │       ├── __init___device_dts_ord_57                                                      8   0.01%
+    │   │       ├── reset_stm32_config                                                              4   0.00%
+    │   │       ├── reset_stm32_driver_api                                                         16   0.02%
+    │   │       ├── reset_stm32_init                                                                4   0.00%
+    │   │       ├── reset_stm32_line_assert                                                        28   0.03%
+    │   │       ├── reset_stm32_line_deassert                                                      30   0.03%
+    │   │       ├── reset_stm32_line_toggle                                                        22   0.02%
+    │   │       └── reset_stm32_status                                                             32   0.03%
+    │   ├── serial                                                                               1946   2.09%
+    │   │   └── uart_stm32.c                                                                     1946   2.09%
+    │   │       ├── __devstate_dts_ord_58                                                           2   0.00%
+    │   │       ├── __devstate_dts_ord_61                                                           2   0.00%
+    │   │       ├── __init___device_dts_ord_58                                                      8   0.01%
+    │   │       ├── __init___device_dts_ord_61                                                      8   0.01%
+    │   │       ├── __pinctrl_dev_config__device_dts_ord_58                                         8   0.01%
+    │   │       ├── __pinctrl_dev_config__device_dts_ord_61                                         8   0.01%
+    │   │       ├── __pinctrl_state_pins_0__device_dts_ord_58                                      32   0.03%
+    │   │       ├── __pinctrl_state_pins_0__device_dts_ord_61                                      16   0.02%
+    │   │       ├── __pinctrl_states__device_dts_ord_58                                             8   0.01%
+    │   │       ├── __pinctrl_states__device_dts_ord_61                                             8   0.01%
+    │   │       ├── log_const_uart_stm32                                                            8   0.01%
+    │   │       ├── lpuartdiv_calc                                                                 48   0.05%
+    │   │       ├── pclken_0                                                                        8   0.01%
+    │   │       ├── pclken_1                                                                        8   0.01%
+    │   │       ├── uart_stm32_cfg_0                                                               28   0.03%
+    │   │       ├── uart_stm32_cfg_1                                                               28   0.03%
+    │   │       ├── uart_stm32_config_get                                                         162   0.17%
+    │   │       ├── uart_stm32_configure                                                          556   0.60%
+    │   │       ├── uart_stm32_data_0                                                              16   0.02%
+    │   │       ├── uart_stm32_data_1                                                              16   0.02%
+    │   │       ├── uart_stm32_driver_api                                                          20   0.02%
+    │   │       ├── uart_stm32_err_check                                                           84   0.09%
+    │   │       ├── uart_stm32_init                                                               464   0.50%
+    │   │       ├── uart_stm32_poll_in                                                             34   0.04%
+    │   │       ├── uart_stm32_poll_out                                                            58   0.06%
+    │   │       └── uart_stm32_set_baudrate                                                       308   0.33%
+    │   └── timer                                                                                 468   0.50%
+    │       └── cortex_m_systick.c                                                                468   0.50%
+    │           ├── __init_sys_clock_driver_init                                                    8   0.01%
+    │           ├── elapsed                                                                        60   0.06%
+    │           ├── sys_clock_driver_init                                                          52   0.06%
+    │           ├── sys_clock_elapsed                                                              60   0.06%
+    │           ├── sys_clock_isr                                                                  68   0.07%
+    │           └── sys_clock_set_timeout                                                         220   0.24%
+    ├── include                                                                                   824   0.89%
+    │   └── zephyr                                                                                824   0.89%
+    │       ├── bluetooth                                                                          94   0.10%
+    │       │   ├── addr.h                                                                         50   0.05%
+    │       │   │   ├── bt_addr_le_copy                                                            18   0.02%
+    │       │   │   └── bt_addr_le_eq                                                              32   0.03%
+    │       │   └── gatt.h                                                                         44   0.05%
+    │       │       └── bt_gatt_foreach_attr                                                       44   0.05%
+    │       ├── drivers                                                                            36   0.04%
+    │       │   └── bluetooth                                                                      36   0.04%
+    │       │       └── hci_driver.h                                                               36   0.04%
+    │       │           └── bt_hci_evt_get_flags                                                   36   0.04%
+    │       ├── logging                                                                            40   0.04%
+    │       │   ├── log_internal.h                                                                  6   0.01%
+    │       │   │   └── z_log_notify_drop                                                           6   0.01%
+    │       │   └── log_msg.h                                                                      34   0.04%
+    │       │       └── log_msg_generic_get_wlen                                                   34   0.04%
+    │       ├── net                                                                                16   0.02%
+    │       │   └── buf.h                                                                          16   0.02%
+    │       │       └── net_buf_frags_len                                                          16   0.02%
+    │       └── sys                                                                               638   0.69%
+    │           ├── atomic.h                                                                      208   0.22%
+    │           │   ├── atomic_clear_bit                                                           30   0.03%
+    │           │   ├── atomic_set_bit                                                             28   0.03%
+    │           │   ├── atomic_set_bit_to                                                          46   0.05%
+    │           │   ├── atomic_test_and_clear_bit                                                  44   0.05%
+    │           │   ├── atomic_test_and_set_bit                                                    42   0.05%
+    │           │   └── atomic_test_bit                                                            18   0.02%
+    │           ├── atomic_builtin.h                                                              152   0.16%
+    │           │   ├── atomic_and                                                                 60   0.06%
+    │           │   ├── atomic_and.isra.0                                                          24   0.03%
+    │           │   ├── atomic_get                                                                 12   0.01%
+    │           │   ├── atomic_inc                                                                 26   0.03%
+    │           │   └── atomic_or                                                                  30   0.03%
+    │           ├── byteorder.h                                                                    80   0.09%
+    │           │   ├── sys_mem_swap.constprop.0                                                   28   0.03%
+    │           │   ├── sys_memcpy_swap                                                            20   0.02%
+    │           │   └── sys_put_le64                                                               32   0.03%
+    │           ├── cbprintf.h                                                                     58   0.06%
+    │           │   ├── cbvprintf                                                                  14   0.02%
+    │           │   └── z_cbprintf_cpy                                                             44   0.05%
+    │           ├── dlist.h                                                                        16   0.02%
+    │           │   └── sys_dlist_remove                                                           16   0.02%
+    │           └── slist.h                                                                       124   0.13%
+    │               ├── sys_slist_find_and_remove                                                  54   0.06%
+    │               ├── sys_slist_find_and_remove.isra.0                                           50   0.05%
+    │               └── sys_slist_get                                                              20   0.02%
+    ├── kernel                                                                                   8284   8.91%
+    │   ├── banner.c                                                                               12   0.01%
+    │   │   └── boot_banner                                                                        12   0.01%
+    │   ├── device.c                                                                               24   0.03%
+    │   │   ├── z_device_is_ready                                                                  22   0.02%
+    │   │   └── z_device_state_init                                                                 2   0.00%
+    │   ├── errno.c                                                                                 4   0.00%
+    │   │   └── _k_neg_eagain                                                                       4   0.00%
+    │   ├── fatal.c                                                                               346   0.37%
+    │   │   ├── arch_system_halt                                                                   18   0.02%
+    │   │   ├── k_sys_fatal_error_handler                                                          64   0.07%
+    │   │   └── z_fatal_error                                                                     264   0.28%
+    │   ├── idle.c                                                                                 24   0.03%
+    │   │   └── idle                                                                               24   0.03%
+    │   ├── include                                                                                22   0.02%
+    │   │   ├── kernel_offsets.h                                                                    2   0.00%
+    │   │   │   └── _OffsetAbsSyms                                                                  2   0.00%
+    │   │   └── ksched.h                                                                           20   0.02%
+    │   │       └── z_reschedule_unlocked                                                          20   0.02%
+    │   ├── init.c                                                                                492   0.53%
+    │   │   ├── bg_thread_main                                                                     52   0.06%
+    │   │   ├── log_const_os                                                                        8   0.01%
+    │   │   ├── z_bss_zero                                                                         24   0.03%
+    │   │   ├── z_cstart                                                                          220   0.24%
+    │   │   ├── z_early_memcpy                                                                      4   0.00%
+    │   │   ├── z_early_memset                                                                      4   0.00%
+    │   │   ├── z_init_cpu                                                                        112   0.12%
+    │   │   └── z_sys_init_run_level                                                               68   0.07%
+    │   ├── kheap.c                                                                               272   0.29%
+    │   │   ├── __init_statics_init_pre                                                             8   0.01%
+    │   │   ├── k_heap_aligned_alloc                                                              154   0.17%
+    │   │   ├── k_heap_free                                                                        58   0.06%
+    │   │   ├── k_heap_init                                                                        16   0.02%
+    │   │   └── statics_init                                                                       36   0.04%
+    │   ├── mem_slab.c                                                                            262   0.28%
+    │   │   ├── __init_init_mem_slab_module                                                         8   0.01%
+    │   │   ├── create_free_list                                                                   44   0.05%
+    │   │   ├── init_mem_slab_module                                                               36   0.04%
+    │   │   ├── k_mem_slab_alloc                                                                   92   0.10%
+    │   │   └── k_mem_slab_free                                                                    82   0.09%
+    │   ├── mempool.c                                                                              78   0.08%
+    │   │   ├── k_free                                                                             14   0.02%
+    │   │   └── z_thread_aligned_alloc                                                             64   0.07%
+    │   ├── poll.c                                                                                942   1.01%
+    │   │   ├── add_event                                                                          98   0.11%
+    │   │   ├── clear_event_registrations                                                          94   0.10%
+    │   │   ├── k_poll_event_init                                                                  30   0.03%
+    │   │   ├── register_events                                                                   238   0.26%
+    │   │   ├── signal_poll_event                                                                 180   0.19%
+    │   │   ├── z_handle_obj_poll_events                                                           28   0.03%
+    │   │   ├── z_impl_k_poll                                                                     184   0.20%
+    │   │   ├── z_impl_k_poll_signal_init                                                          10   0.01%
+    │   │   └── z_impl_k_poll_signal_raise                                                         80   0.09%
+    │   ├── queue.c                                                                               398   0.43%
+    │   │   ├── k_queue_append                                                                     22   0.02%
+    │   │   ├── k_queue_prepend                                                                    20   0.02%
+    │   │   ├── queue_insert                                                                      204   0.22%
+    │   │   ├── z_impl_k_queue_get                                                                104   0.11%
+    │   │   ├── z_impl_k_queue_init                                                                24   0.03%
+    │   │   └── z_queue_node_peek                                                                  24   0.03%
+    │   ├── sched.c                                                                              2066   2.22%
+    │   │   ├── add_to_waitq_locked                                                                80   0.09%
+    │   │   ├── k_sched_lock                                                                       40   0.04%
+    │   │   ├── k_sched_time_slice_set                                                             76   0.08%
+    │   │   ├── k_sched_unlock                                                                     56   0.06%
+    │   │   ├── move_thread_to_end_of_prio_q                                                      116   0.12%
+    │   │   ├── pend_locked                                                                        48   0.05%
+    │   │   ├── ready_thread                                                                      104   0.11%
+    │   │   ├── unpend_thread_no_timeout                                                           20   0.02%
+    │   │   ├── unready_thread                                                                     48   0.05%
+    │   │   ├── update_cache                                                                       60   0.06%
+    │   │   ├── z_impl_k_sleep                                                                     48   0.05%
+    │   │   ├── z_impl_k_thread_suspend                                                           100   0.11%
+    │   │   ├── z_impl_k_yield                                                                    124   0.13%
+    │   │   ├── z_impl_z_current_get                                                               12   0.01%
+    │   │   ├── z_pend_curr                                                                        60   0.06%
+    │   │   ├── z_ready_thread                                                                     32   0.03%
+    │   │   ├── z_reschedule                                                                       36   0.04%
+    │   │   ├── z_reschedule_irqlock                                                               24   0.03%
+    │   │   ├── z_reset_time_slice                                                                 40   0.04%
+    │   │   ├── z_sched_init                                                                       24   0.03%
+    │   │   ├── z_sched_prio_cmp                                                                   18   0.02%
+    │   │   ├── z_sched_start                                                                      60   0.06%
+    │   │   ├── z_sched_wait                                                                       36   0.04%
+    │   │   ├── z_sched_wake                                                                       70   0.08%
+    │   │   ├── z_thread_abort                                                                    192   0.21%
+    │   │   ├── z_thread_timeout                                                                   68   0.07%
+    │   │   ├── z_tick_sleep                                                                      136   0.15%
+    │   │   ├── z_time_slice                                                                      132   0.14%
+    │   │   ├── z_unpend1_no_timeout                                                               46   0.05%
+    │   │   ├── z_unpend_all                                                                       32   0.03%
+    │   │   ├── z_unpend_first_thread                                                              56   0.06%
+    │   │   ├── z_unpend_thread                                                                    40   0.04%
+    │   │   └── z_unpend_thread_no_timeout                                                         32   0.03%
+    │   ├── sem.c                                                                                 188   0.20%
+    │   │   ├── z_impl_k_sem_give                                                                  76   0.08%
+    │   │   ├── z_impl_k_sem_init                                                                  32   0.03%
+    │   │   └── z_impl_k_sem_take                                                                  80   0.09%
+    │   ├── system_work_q.c                                                                        60   0.06%
+    │   │   ├── __init_k_sys_work_q_init                                                            8   0.01%
+    │   │   └── k_sys_work_q_init                                                                  52   0.06%
+    │   ├── thread.c                                                                              366   0.39%
+    │   │   ├── k_is_in_isr                                                                        12   0.01%
+    │   │   ├── k_thread_name_get                                                                   4   0.00%
+    │   │   ├── z_impl_k_thread_create                                                             88   0.09%
+    │   │   ├── z_impl_k_thread_name_set                                                            6   0.01%
+    │   │   ├── z_impl_k_thread_start                                                               4   0.00%
+    │   │   ├── z_init_static_threads                                                             152   0.16%
+    │   │   └── z_setup_new_thread                                                                100   0.11%
+    │   ├── timeout.c                                                                             828   0.89%
+    │   │   ├── elapsed                                                                            20   0.02%
+    │   │   ├── next_timeout                                                                       80   0.09%
+    │   │   ├── remove_timeout                                                                     56   0.06%
+    │   │   ├── sys_clock_announce                                                                180   0.19%
+    │   │   ├── sys_clock_tick_get                                                                 52   0.06%
+    │   │   ├── sys_clock_tick_get_32                                                               8   0.01%
+    │   │   ├── sys_clock_timeout_end_calc                                                         68   0.07%
+    │   │   ├── timeout_list                                                                        8   0.01%
+    │   │   ├── z_abort_timeout                                                                    44   0.05%
+    │   │   ├── z_add_timeout                                                                     252   0.27%
+    │   │   ├── z_impl_k_uptime_ticks                                                               4   0.00%
+    │   │   └── z_set_timeout_expiry                                                               56   0.06%
+    │   ├── timer.c                                                                               446   0.48%
+    │   │   ├── k_timer_init                                                                       24   0.03%
+    │   │   ├── z_impl_k_timer_start                                                              152   0.16%
+    │   │   ├── z_impl_k_timer_stop                                                                58   0.06%
+    │   │   └── z_timer_expiration_handler                                                        212   0.23%
+    │   ├── work.c                                                                               1402   1.51%
+    │   │   ├── cancel_async_locked                                                               102   0.11%
+    │   │   ├── cancel_sync_locked                                                                 60   0.06%
+    │   │   ├── flag_test_and_clear                                                                22   0.02%
+    │   │   ├── k_work_busy_get                                                                    32   0.03%
+    │   │   ├── k_work_cancel_delayable                                                            40   0.04%
+    │   │   ├── k_work_cancel_delayable_sync                                                       98   0.11%
+    │   │   ├── k_work_init                                                                        18   0.02%
+    │   │   ├── k_work_init_delayable                                                              24   0.03%
+    │   │   ├── k_work_queue_init                                                                  12   0.01%
+    │   │   ├── k_work_queue_start                                                                112   0.12%
+    │   │   ├── k_work_reschedule                                                                  12   0.01%
+    │   │   ├── k_work_reschedule_for_queue                                                        92   0.10%
+    │   │   ├── k_work_schedule                                                                    12   0.01%
+    │   │   ├── k_work_schedule_for_queue                                                          84   0.09%
+    │   │   ├── k_work_submit                                                                      12   0.01%
+    │   │   ├── k_work_submit_to_queue                                                             34   0.04%
+    │   │   ├── notify_queue_locked.isra.0                                                         14   0.02%
+    │   │   ├── submit_to_queue_locked                                                            180   0.19%
+    │   │   ├── unschedule_locked                                                                  28   0.03%
+    │   │   ├── work_queue_main                                                                   312   0.34%
+    │   │   ├── work_timeout                                                                       62   0.07%
+    │   │   └── z_work_submit_to_queue                                                             40   0.04%
+    │   └── xip.c                                                                                  52   0.06%
+    │       └── z_data_copy                                                                        52   0.06%
+    ├── lib                                                                                      6428   6.91%
+    │   ├── libc                                                                                  146   0.16%
+    │   │   └── minimal                                                                           146   0.16%
+    │   │       ├── include                                                                       124   0.13%
+    │   │       │   └── string.h                                                                  124   0.13%
+    │   │       │       ├── memcmp                                                                 32   0.03%
+    │   │       │       ├── memcpy                                                                 22   0.02%
+    │   │       │       ├── memset                                                                 18   0.02%
+    │   │       │       ├── strcpy                                                                 20   0.02%
+    │   │       │       ├── strlen                                                                 14   0.02%
+    │   │       │       └── strnlen                                                                18   0.02%
+    │   │       └── source                                                                         22   0.02%
+    │   │           └── stdout                                                                     22   0.02%
+    │   │               └── stdout_console.c                                                       22   0.02%
+    │   │                   ├── __stdout_hook_install                                              12   0.01%
+    │   │                   ├── _stdout_hook                                                        4   0.00%
+    │   │                   └── _stdout_hook_default                                                6   0.01%
+    │   └── os                                                                                   6282   6.76%
+    │       ├── assert.c                                                                           26   0.03%
+    │       │   └── assert_print                                                                   26   0.03%
+    │       ├── cbprintf_complete.c                                                              2078   2.23%
+    │       │   ├── encode_uint                                                                   140   0.15%
+    │       │   ├── outs                                                                           46   0.05%
+    │       │   └── z_cbvprintf_impl                                                             1892   2.03%
+    │       ├── cbprintf_packaged.c                                                              2082   2.24%
+    │       │   ├── cbpprintf_external                                                             98   0.11%
+    │       │   ├── cbprintf_package_convert                                                      964   1.04%
+    │       │   ├── cbvprintf_package                                                             938   1.01%
+    │       │   ├── is_ptr                                                                         74   0.08%
+    │       │   └── log_const_cbprintf_package                                                      8   0.01%
+    │       ├── heap.c                                                                            896   0.96%
+    │       │   ├── alloc_chunk                                                                   110   0.12%
+    │       │   ├── free_chunk                                                                     98   0.11%
+    │       │   ├── free_list_add                                                                  78   0.08%
+    │       │   ├── free_list_remove                                                               26   0.03%
+    │       │   ├── free_list_remove_bidx                                                          58   0.06%
+    │       │   ├── merge_chunks                                                                   44   0.05%
+    │       │   ├── split_chunks                                                                   52   0.06%
+    │       │   ├── sys_heap_aligned_alloc                                                        206   0.22%
+    │       │   ├── sys_heap_alloc                                                                 82   0.09%
+    │       │   ├── sys_heap_free                                                                  30   0.03%
+    │       │   └── sys_heap_init                                                                 112   0.12%
+    │       ├── heap.h                                                                             10   0.01%
+    │       │   └── chunk_size                                                                     10   0.01%
+    │       ├── mpsc_pbuf.c                                                                      1012   1.09%
+    │       │   ├── add_skip_item                                                                  44   0.05%
+    │       │   ├── drop_item_locked                                                              180   0.19%
+    │       │   ├── free_space                                                                     34   0.04%
+    │       │   ├── get_usage                                                                      34   0.04%
+    │       │   ├── idx_inc                                                                        28   0.03%
+    │       │   ├── max_utilization_update                                                         26   0.03%
+    │       │   ├── mpsc_pbuf_alloc                                                               252   0.27%
+    │       │   ├── mpsc_pbuf_claim                                                               160   0.17%
+    │       │   ├── mpsc_pbuf_commit                                                               64   0.07%
+    │       │   ├── mpsc_pbuf_free                                                                104   0.11%
+    │       │   ├── mpsc_pbuf_init                                                                 66   0.07%
+    │       │   └── mpsc_pbuf_is_pending                                                           20   0.02%
+    │       ├── printk.c                                                                          158   0.17%
+    │       │   ├── __printk_hook_install                                                          12   0.01%
+    │       │   ├── _char_out                                                                       4   0.00%
+    │       │   ├── arch_printk_char_out                                                            4   0.00%
+    │       │   ├── printk                                                                         26   0.03%
+    │       │   ├── snprintk                                                                       26   0.03%
+    │       │   ├── str_out                                                                        38   0.04%
+    │       │   ├── vprintk                                                                         4   0.00%
+    │       │   └── vsnprintk                                                                      44   0.05%
+    │       └── thread_entry.c                                                                     20   0.02%
+    │           └── z_thread_entry                                                                 20   0.02%
+    ├── samples                                                                                   820   0.88%
+    │   └── bluetooth                                                                             820   0.88%
+    │       └── peripheral_hr                                                                     820   0.88%
+    │           ├── build                                                                         412   0.44%
+    │           │   └── zephyr                                                                    412   0.44%
+    │           │       ├── dev_handles.c                                                         110   0.12%
+    │           │       │   ├── __devicehdl_dts_ord_31                                              8   0.01%
+    │           │       │   ├── __devicehdl_dts_ord_33                                              8   0.01%
+    │           │       │   ├── __devicehdl_dts_ord_37                                              8   0.01%
+    │           │       │   ├── __devicehdl_dts_ord_50                                              6   0.01%
+    │           │       │   ├── __devicehdl_dts_ord_57                                             12   0.01%
+    │           │       │   ├── __devicehdl_dts_ord_58                                             10   0.01%
+    │           │       │   ├── __devicehdl_dts_ord_61                                             10   0.01%
+    │           │       │   ├── __devicehdl_dts_ord_8                                              24   0.03%
+    │           │       │   ├── __devicehdl_dts_ord_84                                              8   0.01%
+    │           │       │   ├── __devicehdl_dts_ord_85                                              8   0.01%
+    │           │       │   └── __devicehdl_dts_ord_86                                              8   0.01%
+    │           │       ├── include                                                                48   0.05%
+    │           │       │   └── generated                                                          48   0.05%
+    │           │       │       └── syscalls                                                       48   0.05%
+    │           │       │           └── log_msg.h                                                  48   0.05%
+    │           │       │               └── z_log_msg_static_create.constprop.0                    48   0.05%
+    │           │       ├── isr_tables.c                                                          252   0.27%
+    │           │       │   └── _irq_vector_table                                                 252   0.27%
+    │           │       └── misc                                                                    2   0.00%
+    │           │           └── generated                                                           2   0.00%
+    │           │               └── configs.c                                                       2   0.00%
+    │           │                   └── _ConfigAbsSyms                                              2   0.00%
+    │           └── src                                                                           408   0.44%
+    │               └── main.c                                                                    408   0.44%
+    │                   ├── ad                                                                     16   0.02%
+    │                   ├── auth_cancel                                                           132   0.14%
+    │                   ├── auth_cb_display                                                        24   0.03%
+    │                   ├── bt_conn_cb_conn_callbacks                                              32   0.03%
+    │                   ├── connected                                                              24   0.03%
+    │                   ├── disconnected                                                           12   0.01%
+    │                   └── main                                                                  168   0.18%
+    ├── soc                                                                                       216   0.23%
+    │   └── arm                                                                                   216   0.23%
+    │       ├── common                                                                             24   0.03%
+    │       │   └── cortex_m                                                                       24   0.03%
+    │       │       └── arm_mpu_regions.c                                                          24   0.03%
+    │       │           └── mpu_regions                                                            24   0.03%
+    │       └── st_stm32                                                                          192   0.21%
+    │           ├── common                                                                        112   0.12%
+    │           │   ├── soc_config.c                                                               12   0.01%
+    │           │   │   ├── __init_st_stm32_common_config                                           8   0.01%
+    │           │   │   └── st_stm32_common_config                                                  4   0.00%
+    │           │   └── stm32_hsem.h                                                              100   0.11%
+    │           │       └── z_stm32_hsem_lock.constprop.0                                         100   0.11%
+    │           └── stm32wb                                                                        80   0.09%
+    │               └── soc.c                                                                      80   0.09%
+    │                   ├── __init_stm32wb_init                                                     8   0.01%
+    │                   ├── log_const_soc                                                           8   0.01%
+    │                   └── stm32wb_init                                                           64   0.07%
+    └── subsys                                                                                  46817  50.34%
+        ├── bluetooth                                                                           42759  45.98%
+        │   ├── common                                                                            276   0.30%
+        │   │   ├── bt_str.c                                                                      192   0.21%
+        │   │   │   ├── bt_addr_le_str                                                            124   0.13%
+        │   │   │   └── bt_hex                                                                     68   0.07%
+        │   │   └── rpa.c                                                                          84   0.09%
+        │   │       ├── bt_rpa_irk_matches                                                         76   0.08%
+        │   │       └── log_const_bt_rpa                                                            8   0.01%
+        │   ├── crypto                                                                            606   0.65%
+        │   │   └── bt_crypto.c                                                                   606   0.65%
+        │   │       ├── bt_crypto_aes_cmac                                                         60   0.06%
+        │   │       ├── bt_crypto_f4                                                               74   0.08%
+        │   │       ├── bt_crypto_f5                                                              208   0.22%
+        │   │       ├── bt_crypto_f6                                                              152   0.16%
+        │   │       ├── bt_crypto_g2                                                              104   0.11%
+        │   │       └── log_const_bt_crypto                                                         8   0.01%
+        │   ├── host                                                                            41016  44.11%
+        │   │   ├── addr.c                                                                         28   0.03%
+        │   │   │   └── bt_addr_le_create_static                                                   28   0.03%
+        │   │   ├── adv.c                                                                        1980   2.13%
+        │   │   │   ├── adv_timeout                                                                56   0.06%
+        │   │   │   ├── bt_le_adv_lookup_legacy                                                     8   0.01%
+        │   │   │   ├── bt_le_adv_resume                                                          136   0.15%
+        │   │   │   ├── bt_le_adv_set_enable                                                        4   0.00%
+        │   │   │   ├── bt_le_adv_set_enable_legacy                                                74   0.08%
+        │   │   │   ├── bt_le_adv_start                                                           104   0.11%
+        │   │   │   ├── bt_le_adv_start_legacy                                                    648   0.70%
+        │   │   │   ├── bt_le_adv_stop                                                            132   0.14%
+        │   │   │   ├── bt_le_ext_adv_foreach                                                      12   0.01%
+        │   │   │   ├── bt_le_lim_adv_cancel_timeout                                                6   0.01%
+        │   │   │   ├── get_adv_channel_map                                                        30   0.03%
+        │   │   │   ├── get_adv_name_type_param                                                    32   0.03%
+        │   │   │   ├── hci_set_ad                                                                252   0.27%
+        │   │   │   ├── le_adv_start_add_conn                                                     108   0.12%
+        │   │   │   ├── le_adv_update.constprop.0                                                 238   0.26%
+        │   │   │   ├── log_const_bt_adv                                                            8   0.01%
+        │   │   │   └── valid_adv_param                                                           132   0.14%
+        │   │   ├── att.c                                                                        6862   7.38%
+        │   │   │   ├── att_cfm_sent                                                               48   0.05%
+        │   │   │   ├── att_chan_mtu_updated                                                      102   0.11%
+        │   │   │   ├── att_chan_read                                                             278   0.30%
+        │   │   │   ├── att_confirm                                                                10   0.01%
+        │   │   │   ├── att_find_info_req                                                         120   0.13%
+        │   │   │   ├── att_find_type_req                                                         208   0.22%
+        │   │   │   ├── att_get                                                                   104   0.11%
+        │   │   │   ├── att_handle_rsp                                                            164   0.18%
+        │   │   │   ├── att_mtu_req                                                                96   0.10%
+        │   │   │   ├── att_op_get_type                                                           116   0.12%
+        │   │   │   ├── att_prepare_write_req                                                       4   0.00%
+        │   │   │   ├── att_read_blob_req                                                          24   0.03%
+        │   │   │   ├── att_read_group_req                                                        252   0.27%
+        │   │   │   ├── att_read_mult_req                                                         168   0.18%
+        │   │   │   ├── att_read_mult_vl_req                                                      168   0.18%
+        │   │   │   ├── att_read_req                                                               24   0.03%
+        │   │   │   ├── att_read_rsp                                                              160   0.17%
+        │   │   │   ├── att_read_type_req                                                         196   0.21%
+        │   │   │   ├── att_req_send_process                                                      136   0.15%
+        │   │   │   ├── att_req_sent                                                               44   0.05%
+        │   │   │   ├── att_rsp_sent                                                               48   0.05%
+        │   │   │   ├── att_sent                                                                   14   0.02%
+        │   │   │   ├── att_slab                                                                   28   0.03%
+        │   │   │   ├── att_timeout                                                                64   0.07%
+        │   │   │   ├── att_tx_complete                                                            64   0.07%
+        │   │   │   ├── att_unknown                                                                20   0.02%
+        │   │   │   ├── att_write_cmd                                                              38   0.04%
+        │   │   │   ├── att_write_req                                                              38   0.04%
+        │   │   │   ├── att_write_rsp.constprop.0                                                 200   0.22%
+        │   │   │   ├── attr_read_group_cb                                                         32   0.03%
+        │   │   │   ├── attr_read_type_cb                                                          32   0.03%
+        │   │   │   ├── bt_att_accept                                                             296   0.32%
+        │   │   │   ├── bt_att_chan_create_pdu                                                    236   0.25%
+        │   │   │   ├── bt_att_chan_send_rsp                                                       28   0.03%
+        │   │   │   ├── bt_att_clear_out_of_sync_sent                                              50   0.05%
+        │   │   │   ├── bt_att_connected                                                           68   0.07%
+        │   │   │   ├── bt_att_create_pdu                                                         128   0.14%
+        │   │   │   ├── bt_att_disconnected                                                       200   0.22%
+        │   │   │   ├── bt_att_encrypt_change                                                     134   0.14%
+        │   │   │   ├── bt_att_fixed_chan_only                                                      4   0.00%
+        │   │   │   ├── bt_att_init                                                                56   0.06%
+        │   │   │   ├── bt_att_out_of_sync_sent_on_fixed                                           24   0.03%
+        │   │   │   ├── bt_att_recv                                                               384   0.41%
+        │   │   │   ├── bt_att_released                                                            24   0.03%
+        │   │   │   ├── bt_att_req_alloc                                                           68   0.07%
+        │   │   │   ├── bt_att_req_free                                                            48   0.05%
+        │   │   │   ├── bt_att_req_send                                                            42   0.05%
+        │   │   │   ├── bt_att_send                                                               124   0.13%
+        │   │   │   ├── bt_att_sent                                                               110   0.12%
+        │   │   │   ├── bt_att_set_tx_meta_data                                                    14   0.02%
+        │   │   │   ├── bt_att_status                                                              66   0.07%
+        │   │   │   ├── chan_req_send                                                              52   0.06%
+        │   │   │   ├── chan_send                                                                 204   0.22%
+        │   │   │   ├── chan_slab                                                                  28   0.03%
+        │   │   │   ├── find_info_cb                                                              152   0.16%
+        │   │   │   ├── find_type_cb                                                              396   0.43%
+        │   │   │   ├── free_att_tx_meta_data                                                      24   0.03%
+        │   │   │   ├── handlers                                                                  112   0.12%
+        │   │   │   ├── log_const_bt_att                                                            8   0.01%
+        │   │   │   ├── process_queue                                                              50   0.05%
+        │   │   │   ├── read_cb                                                                    70   0.08%
+        │   │   │   ├── read_group_cb                                                             172   0.18%
+        │   │   │   ├── read_type_cb                                                              160   0.17%
+        │   │   │   ├── read_vl_cb                                                                106   0.11%
+        │   │   │   ├── req_slab                                                                   28   0.03%
+        │   │   │   ├── send_err_rsp.part.0                                                        58   0.06%
+        │   │   │   ├── tx_meta_data_free                                                          28   0.03%
+        │   │   │   ├── write_cb                                                                   98   0.11%
+        │   │   │   └── z_att_fixed_chan                                                           12   0.01%
+        │   │   ├── buf.c                                                                         352   0.38%
+        │   │   │   ├── bt_buf_get_cmd_complete                                                    52   0.06%
+        │   │   │   ├── bt_buf_get_evt                                                             88   0.09%
+        │   │   │   ├── bt_buf_get_rx                                                              32   0.03%
+        │   │   │   ├── discardable_pool                                                           44   0.05%
+        │   │   │   ├── hci_rx_pool                                                                44   0.05%
+        │   │   │   ├── net_buf_fixed_alloc_discardable_pool                                        8   0.01%
+        │   │   │   ├── net_buf_fixed_alloc_hci_rx_pool                                             8   0.01%
+        │   │   │   ├── net_buf_fixed_alloc_num_complete_pool                                       8   0.01%
+        │   │   │   ├── net_buf_fixed_discardable_pool                                              8   0.01%
+        │   │   │   ├── net_buf_fixed_hci_rx_pool                                                   8   0.01%
+        │   │   │   ├── net_buf_fixed_num_complete_pool                                             8   0.01%
+        │   │   │   └── num_complete_pool                                                          44   0.05%
+        │   │   ├── conn.c                                                                       4380   4.71%
+        │   │   │   ├── acl_tx_pool                                                                44   0.05%
+        │   │   │   ├── bt_conn_add_le                                                             56   0.06%
+        │   │   │   ├── bt_conn_auth_cb_register                                                   52   0.06%
+        │   │   │   ├── bt_conn_connected                                                          18   0.02%
+        │   │   │   ├── bt_conn_create_frag_timeout                                                12   0.01%
+        │   │   │   ├── bt_conn_create_pdu_timeout                                                 44   0.05%
+        │   │   │   ├── bt_conn_create_pdu_timeout.part.0                                          52   0.06%
+        │   │   │   ├── bt_conn_disconnect                                                         64   0.07%
+        │   │   │   ├── bt_conn_exists_le                                                         104   0.11%
+        │   │   │   ├── bt_conn_get_dst                                                             4   0.00%
+        │   │   │   ├── bt_conn_get_pkts                                                            8   0.01%
+        │   │   │   ├── bt_conn_get_security                                                        4   0.00%
+        │   │   │   ├── bt_conn_identity_resolved                                                  92   0.10%
+        │   │   │   ├── bt_conn_index                                                              24   0.03%
+        │   │   │   ├── bt_conn_init                                                               68   0.07%
+        │   │   │   ├── bt_conn_is_peer_addr_le                                                    64   0.07%
+        │   │   │   ├── bt_conn_le_conn_update                                                     80   0.09%
+        │   │   │   ├── bt_conn_lookup_addr_le                                                     52   0.06%
+        │   │   │   ├── bt_conn_lookup_handle                                                      16   0.02%
+        │   │   │   ├── bt_conn_lookup_state_le                                                    68   0.07%
+        │   │   │   ├── bt_conn_new                                                               100   0.11%
+        │   │   │   ├── bt_conn_prepare_events                                                    116   0.12%
+        │   │   │   ├── bt_conn_process_tx                                                        208   0.22%
+        │   │   │   ├── bt_conn_recv                                                              352   0.38%
+        │   │   │   ├── bt_conn_ref                                                                56   0.06%
+        │   │   │   ├── bt_conn_reset_rx_state                                                     18   0.02%
+        │   │   │   ├── bt_conn_security_changed                                                   76   0.08%
+        │   │   │   ├── bt_conn_send_cb                                                           252   0.27%
+        │   │   │   ├── bt_conn_set_security                                                       96   0.10%
+        │   │   │   ├── bt_conn_set_state                                                         504   0.54%
+        │   │   │   ├── bt_conn_unref                                                              56   0.06%
+        │   │   │   ├── conn_change                                                                16   0.02%
+        │   │   │   ├── conn_cleanup                                                               70   0.08%
+        │   │   │   ├── conn_lookup_handle                                                         68   0.07%
+        │   │   │   ├── conn_tx_destroy                                                            44   0.05%
+        │   │   │   ├── create_frag                                                               108   0.12%
+        │   │   │   ├── deferred_work                                                             292   0.31%
+        │   │   │   ├── frag_pool                                                                  44   0.05%
+        │   │   │   ├── free_tx                                                                    24   0.03%
+        │   │   │   ├── le_param_req                                                              116   0.12%
+        │   │   │   ├── log_const_bt_conn                                                           8   0.01%
+        │   │   │   ├── net_buf_fixed_acl_tx_pool                                                   8   0.01%
+        │   │   │   ├── net_buf_fixed_alloc_acl_tx_pool                                             8   0.01%
+        │   │   │   ├── net_buf_fixed_alloc_frag_pool                                               8   0.01%
+        │   │   │   ├── net_buf_fixed_frag_pool                                                     8   0.01%
+        │   │   │   ├── notify_connected                                                           60   0.06%
+        │   │   │   ├── notify_le_param_updated                                                   136   0.15%
+        │   │   │   ├── notify_le_phy_updated                                                      68   0.07%
+        │   │   │   ├── send_conn_le_param_update                                                 108   0.12%
+        │   │   │   ├── send_frag                                                                 324   0.35%
+        │   │   │   ├── tx_complete_work                                                            6   0.01%
+        │   │   │   └── tx_notify                                                                  96   0.10%
+        │   │   ├── crypto.c                                                                      398   0.43%
+        │   │   │   ├── bt_encrypt_le                                                             110   0.12%
+        │   │   │   ├── bt_rand                                                                    60   0.06%
+        │   │   │   ├── log_const_bt_host_crypto                                                    8   0.01%
+        │   │   │   ├── prng_init                                                                 100   0.11%
+        │   │   │   └── prng_reseed.constprop.0                                                   120   0.13%
+        │   │   ├── ecc.c                                                                         816   0.88%
+        │   │   │   ├── bt_dh_key_gen                                                             192   0.21%
+        │   │   │   ├── bt_hci_evt_le_dhkey_complete                                               28   0.03%
+        │   │   │   ├── bt_hci_evt_le_pkey_complete                                               124   0.13%
+        │   │   │   ├── bt_pub_key_gen                                                            344   0.37%
+        │   │   │   ├── bt_pub_key_get                                                             32   0.03%
+        │   │   │   ├── bt_pub_key_is_debug                                                        24   0.03%
+        │   │   │   ├── debug_public_key                                                           64   0.07%
+        │   │   │   └── log_const_bt_ecc                                                            8   0.01%
+        │   │   ├── gatt.c                                                                       5822   6.26%
+        │   │   │   ├── _1_gatt_svc                                                                 8   0.01%
+        │   │   │   ├── _2_gap_svc                                                                  8   0.01%
+        │   │   │   ├── attr__1_gatt_svc                                                          160   0.17%
+        │   │   │   ├── attr__2_gap_svc                                                           140   0.15%
+        │   │   │   ├── bt_gatt_att_max_mtu_changed                                                40   0.04%
+        │   │   │   ├── bt_gatt_attr_get_handle                                                    96   0.10%
+        │   │   │   ├── bt_gatt_attr_next                                                          36   0.04%
+        │   │   │   ├── bt_gatt_attr_read                                                          46   0.05%
+        │   │   │   ├── bt_gatt_attr_read_ccc                                                      64   0.07%
+        │   │   │   ├── bt_gatt_attr_read_chrc                                                     98   0.11%
+        │   │   │   ├── bt_gatt_attr_read_service                                                  82   0.09%
+        │   │   │   ├── bt_gatt_attr_value_handle                                                  58   0.06%
+        │   │   │   ├── bt_gatt_attr_write_ccc                                                    216   0.23%
+        │   │   │   ├── bt_gatt_change_aware                                                      142   0.15%
+        │   │   │   ├── bt_gatt_check_perm                                                        104   0.11%
+        │   │   │   ├── bt_gatt_connected                                                         104   0.11%
+        │   │   │   ├── bt_gatt_disconnected                                                       72   0.08%
+        │   │   │   ├── bt_gatt_encrypt_change                                                     32   0.03%
+        │   │   │   ├── bt_gatt_foreach_attr_type                                                 180   0.19%
+        │   │   │   ├── bt_gatt_indicate                                                          244   0.26%
+        │   │   │   ├── bt_gatt_init                                                              172   0.18%
+        │   │   │   ├── bt_gatt_is_subscribed                                                     282   0.30%
+        │   │   │   ├── bt_gatt_notify_cb                                                         236   0.25%
+        │   │   │   ├── cf_read                                                                    72   0.08%
+        │   │   │   ├── cf_write                                                                  188   0.20%
+        │   │   │   ├── clear_cf_cfg                                                               56   0.06%
+        │   │   │   ├── db_hash_gen.constprop.0                                                   192   0.21%
+        │   │   │   ├── db_hash_process                                                             4   0.00%
+        │   │   │   ├── db_hash_read                                                              132   0.14%
+        │   │   │   ├── disconnected_cb                                                           180   0.19%
+        │   │   │   ├── find_ccc_cfg                                                               72   0.08%
+        │   │   │   ├── find_cf_cfg                                                                92   0.10%
+        │   │   │   ├── find_next                                                                   6   0.01%
+        │   │   │   ├── find_sc_cfg                                                                68   0.07%
+        │   │   │   ├── gatt_ccc_changed                                                           28   0.03%
+        │   │   │   ├── gatt_indicate                                                             312   0.34%
+        │   │   │   ├── gatt_indicate_rsp                                                          38   0.04%
+        │   │   │   ├── gatt_notify                                                               248   0.27%
+        │   │   │   ├── gen_hash_m                                                                166   0.18%
+        │   │   │   ├── log_const_bt_gatt                                                           8   0.01%
+        │   │   │   ├── match_uuid                                                                  8   0.01%
+        │   │   │   ├── notify_cb                                                                 340   0.37%
+        │   │   │   ├── read_appearance                                                            58   0.06%
+        │   │   │   ├── read_name                                                                  60   0.06%
+        │   │   │   ├── read_ppcp                                                                  56   0.06%
+        │   │   │   ├── sc_ccc                                                                     36   0.04%
+        │   │   │   ├── sc_ccc_cfg_write                                                           30   0.03%
+        │   │   │   ├── sc_clear                                                                   40   0.04%
+        │   │   │   ├── sc_indicate_rsp                                                            96   0.10%
+        │   │   │   ├── sc_process                                                                104   0.11%
+        │   │   │   ├── sc_restore_rsp                                                             64   0.07%
+        │   │   │   ├── sc_save                                                                   124   0.13%
+        │   │   │   └── update_ccc                                                                324   0.35%
+        │   │   ├── hci_core.c                                                                   7818   8.41%
+        │   │   │   ├── bt_addr_le_is_bonded                                                       18   0.02%
+        │   │   │   ├── bt_enable                                                                 308   0.33%
+        │   │   │   ├── bt_finalize_init                                                          356   0.38%
+        │   │   │   ├── bt_get_appearance                                                           6   0.01%
+        │   │   │   ├── bt_get_name                                                                 8   0.01%
+        │   │   │   ├── bt_get_phy                                                                 20   0.02%
+        │   │   │   ├── bt_hci_cmd_create                                                         116   0.12%
+        │   │   │   ├── bt_hci_cmd_send                                                           116   0.12%
+        │   │   │   ├── bt_hci_cmd_send_sync                                                      256   0.28%
+        │   │   │   ├── bt_hci_cmd_state_set_init                                                  36   0.04%
+        │   │   │   ├── bt_hci_disconnect                                                          54   0.06%
+        │   │   │   ├── bt_hci_driver_register                                                     40   0.04%
+        │   │   │   ├── bt_hci_le_enh_conn_complete                                               740   0.80%
+        │   │   │   ├── bt_hci_le_rand                                                             88   0.09%
+        │   │   │   ├── bt_init                                                                   992   1.07%
+        │   │   │   ├── bt_le_conn_params_valid                                                    66   0.07%
+        │   │   │   ├── bt_le_set_data_len                                                         60   0.06%
+        │   │   │   ├── bt_recv                                                                   112   0.12%
+        │   │   │   ├── bt_security_err_get                                                        16   0.02%
+        │   │   │   ├── bt_send                                                                    16   0.02%
+        │   │   │   ├── find_pending_connect.part.0                                                44   0.05%
+        │   │   │   ├── handle_event                                                              104   0.11%
+        │   │   │   ├── handle_event.part.0                                                        80   0.09%
+        │   │   │   ├── hci_cmd_complete                                                           48   0.05%
+        │   │   │   ├── hci_cmd_done                                                              316   0.34%
+        │   │   │   ├── hci_cmd_pool                                                               44   0.05%
+        │   │   │   ├── hci_cmd_status                                                             44   0.05%
+        │   │   │   ├── hci_data_buf_overflow                                                      56   0.06%
+        │   │   │   ├── hci_disconn_complete                                                       96   0.10%
+        │   │   │   ├── hci_disconn_complete_prio                                                  60   0.06%
+        │   │   │   ├── hci_encrypt_change                                                        204   0.22%
+        │   │   │   ├── hci_encrypt_key_refresh_complete                                          180   0.19%
+        │   │   │   ├── hci_event_prio                                                            164   0.18%
+        │   │   │   ├── hci_hardware_error                                                         60   0.06%
+        │   │   │   ├── hci_le_meta_event                                                          32   0.03%
+        │   │   │   ├── hci_le_read_max_data_len                                                  100   0.11%
+        │   │   │   ├── hci_num_completed_packets                                                 296   0.32%
+        │   │   │   ├── hci_tx_thread                                                             432   0.46%
+        │   │   │   ├── hci_vendor_event                                                            2   0.00%
+        │   │   │   ├── init_work                                                                  24   0.03%
+        │   │   │   ├── le_conn_param_neg_reply                                                    54   0.06%
+        │   │   │   ├── le_conn_param_neg_reply.part.0                                             48   0.05%
+        │   │   │   ├── le_conn_param_req                                                         220   0.24%
+        │   │   │   ├── le_conn_update_complete                                                   228   0.25%
+        │   │   │   ├── le_data_len_change                                                         72   0.08%
+        │   │   │   ├── le_enh_conn_complete                                                        6   0.01%
+        │   │   │   ├── le_legacy_conn_complete                                                   104   0.11%
+        │   │   │   ├── le_ltk_request                                                            244   0.26%
+        │   │   │   ├── le_phy_update_complete                                                    104   0.11%
+        │   │   │   ├── le_remote_feat_complete                                                   104   0.11%
+        │   │   │   ├── log_const_bt_hci_core                                                       8   0.01%
+        │   │   │   ├── meta_events                                                                80   0.09%
+        │   │   │   ├── net_buf_fixed_alloc_hci_cmd_pool                                            8   0.01%
+        │   │   │   ├── net_buf_fixed_hci_cmd_pool                                                  8   0.01%
+        │   │   │   ├── normal_events                                                              48   0.05%
+        │   │   │   ├── prio_events                                                                40   0.04%
+        │   │   │   ├── rx_queue_put                                                               88   0.09%
+        │   │   │   ├── rx_work                                                                    16   0.02%
+        │   │   │   ├── rx_work_handler                                                           424   0.46%
+        │   │   │   ├── update_sec_level                                                           48   0.05%
+        │   │   │   └── ver_str                                                                    56   0.06%
+        │   │   ├── id.c                                                                         2364   2.54%
+        │   │   │   ├── addr_res_enable                                                            48   0.05%
+        │   │   │   ├── adv_pause_enabled                                                          50   0.05%
+        │   │   │   ├── adv_unpause_enabled                                                        46   0.05%
+        │   │   │   ├── bt_id_add                                                                  52   0.06%
+        │   │   │   ├── bt_id_add.part.0                                                          456   0.49%
+        │   │   │   ├── bt_id_adv_random_addr_check                                                 8   0.01%
+        │   │   │   ├── bt_id_create                                                              188   0.20%
+        │   │   │   ├── bt_id_del                                                                  56   0.06%
+        │   │   │   ├── bt_id_del.part.0                                                          312   0.34%
+        │   │   │   ├── bt_id_find_conflict                                                        32   0.03%
+        │   │   │   ├── bt_id_init                                                                120   0.13%
+        │   │   │   ├── bt_id_pending_keys_update                                                  52   0.06%
+        │   │   │   ├── bt_id_read_public_addr                                                    164   0.18%
+        │   │   │   ├── bt_id_set_adv_own_addr                                                    180   0.19%
+        │   │   │   ├── bt_id_set_adv_private_addr                                                 46   0.05%
+        │   │   │   ├── bt_id_set_adv_random_addr                                                  16   0.02%
+        │   │   │   ├── bt_lookup_id_addr                                                          24   0.03%
+        │   │   │   ├── bt_setup_public_id_addr                                                    32   0.03%
+        │   │   │   ├── bt_setup_random_id_addr                                                     8   0.01%
+        │   │   │   ├── find_rl_conflict                                                           90   0.10%
+        │   │   │   ├── hci_id_add                                                                 94   0.10%
+        │   │   │   ├── id_create.constprop.0                                                      92   0.10%
+        │   │   │   ├── id_find                                                                    48   0.05%
+        │   │   │   ├── keys_add_id                                                                22   0.02%
+        │   │   │   ├── log_const_bt_id                                                             8   0.01%
+        │   │   │   ├── pending_id_update                                                          32   0.03%
+        │   │   │   └── set_random_address                                                         88   0.09%
+        │   │   ├── keys.c                                                                        420   0.45%
+        │   │   │   ├── bt_keys_add_type                                                            8   0.01%
+        │   │   │   ├── bt_keys_clear                                                              28   0.03%
+        │   │   │   ├── bt_keys_find                                                               72   0.08%
+        │   │   │   ├── bt_keys_find_addr                                                          32   0.03%
+        │   │   │   ├── bt_keys_find_irk                                                          136   0.15%
+        │   │   │   ├── bt_keys_foreach_type                                                       28   0.03%
+        │   │   │   ├── bt_keys_get_addr                                                           76   0.08%
+        │   │   │   ├── bt_keys_get_type                                                           32   0.03%
+        │   │   │   └── log_const_bt_keys                                                           8   0.01%
+        │   │   ├── l2cap.c                                                                      1118   1.20%
+        │   │   │   ├── bt_l2cap_chan_del                                                          42   0.05%
+        │   │   │   ├── bt_l2cap_connected                                                        156   0.17%
+        │   │   │   ├── bt_l2cap_create_pdu_timeout                                                 6   0.01%
+        │   │   │   ├── bt_l2cap_disconnected                                                      48   0.05%
+        │   │   │   ├── bt_l2cap_init                                                               2   0.00%
+        │   │   │   ├── bt_l2cap_le_lookup_rx_cid                                                  20   0.02%
+        │   │   │   ├── bt_l2cap_le_lookup_tx_cid                                                  20   0.02%
+        │   │   │   ├── bt_l2cap_recv                                                             132   0.14%
+        │   │   │   ├── bt_l2cap_security_changed                                                  58   0.06%
+        │   │   │   ├── bt_l2cap_send_cb                                                           50   0.05%
+        │   │   │   ├── bt_l2cap_update_conn_param                                                100   0.11%
+        │   │   │   ├── l2cap_accept                                                               28   0.03%
+        │   │   │   ├── l2cap_accept.part.0                                                        56   0.06%
+        │   │   │   ├── l2cap_connected                                                             2   0.00%
+        │   │   │   ├── l2cap_create_le_sig_pdu.constprop.0                                        54   0.06%
+        │   │   │   ├── l2cap_create_le_sig_pdu.part.0                                             52   0.06%
+        │   │   │   ├── l2cap_recv                                                                272   0.29%
+        │   │   │   ├── le_fixed_chan                                                              12   0.01%
+        │   │   │   └── log_const_bt_l2cap                                                          8   0.01%
+        │   │   ├── long_wq.c                                                                      76   0.08%
+        │   │   │   ├── __init_long_wq_init                                                         8   0.01%
+        │   │   │   ├── bt_long_wq_schedule                                                        12   0.01%
+        │   │   │   └── long_wq_init                                                               56   0.06%
+        │   │   ├── smp.c                                                                        8311   8.94%
+        │   │   │   ├── bondable                                                                    1   0.00%
+        │   │   │   ├── bt_smp_accept                                                              36   0.04%
+        │   │   │   ├── bt_smp_accept.part.0                                                       56   0.06%
+        │   │   │   ├── bt_smp_connected                                                           56   0.06%
+        │   │   │   ├── bt_smp_dhkey_ready                                                        130   0.14%
+        │   │   │   ├── bt_smp_disconnected                                                       100   0.11%
+        │   │   │   ├── bt_smp_encrypt_change                                                     588   0.63%
+        │   │   │   ├── bt_smp_init                                                                44   0.05%
+        │   │   │   ├── bt_smp_pkey_ready                                                          72   0.08%
+        │   │   │   ├── bt_smp_pkey_ready.part.0                                                   48   0.05%
+        │   │   │   ├── bt_smp_recv                                                               340   0.37%
+        │   │   │   ├── bt_smp_request_ltk                                                        276   0.30%
+        │   │   │   ├── bt_smp_start_security                                                     396   0.43%
+        │   │   │   ├── bt_smp_update_keys                                                        328   0.35%
+        │   │   │   ├── compute_and_check_and_send_periph_dhcheck                                 408   0.44%
+        │   │   │   ├── gen_method_legacy                                                          25   0.03%
+        │   │   │   ├── gen_method_sc                                                              25   0.03%
+        │   │   │   ├── get_auth                                                                   60   0.06%
+        │   │   │   ├── get_io_capa                                                                76   0.08%
+        │   │   │   ├── handlers                                                                  120   0.13%
+        │   │   │   ├── latch_auth_cb                                                              60   0.06%
+        │   │   │   ├── legacy_pairing_confirm                                                    128   0.14%
+        │   │   │   ├── log_const_bt_smp                                                            8   0.01%
+        │   │   │   ├── sc_local_pkey_ready                                                        24   0.03%
+        │   │   │   ├── send_pairing_rsp                                                           50   0.05%
+        │   │   │   ├── smp_c1                                                                    180   0.19%
+        │   │   │   ├── smp_central_ident                                                         188   0.20%
+        │   │   │   ├── smp_chan_get                                                               22   0.02%
+        │   │   │   ├── smp_chan_get.part.0                                                        52   0.06%
+        │   │   │   ├── smp_create_pdu.constprop.0                                                 64   0.07%
+        │   │   │   ├── smp_dhkey_check                                                            82   0.09%
+        │   │   │   ├── smp_dhkey_generate                                                         92   0.10%
+        │   │   │   ├── smp_encrypt_info                                                          132   0.14%
+        │   │   │   ├── smp_error                                                                 204   0.22%
+        │   │   │   ├── smp_find                                                                   28   0.03%
+        │   │   │   ├── smp_fixed_chan                                                             12   0.01%
+        │   │   │   ├── smp_ident_addr_info                                                       472   0.51%
+        │   │   │   ├── smp_ident_info                                                            132   0.14%
+        │   │   │   ├── smp_ident_sent                                                             46   0.05%
+        │   │   │   ├── smp_init                                                                   56   0.06%
+        │   │   │   ├── smp_keypress_notif                                                         12   0.01%
+        │   │   │   ├── smp_pairing_complete                                                      252   0.27%
+        │   │   │   ├── smp_pairing_confirm                                                       148   0.16%
+        │   │   │   ├── smp_pairing_failed                                                        128   0.14%
+        │   │   │   ├── smp_pairing_random                                                        564   0.61%
+        │   │   │   ├── smp_pairing_req                                                           912   0.98%
+        │   │   │   ├── smp_pairing_rsp                                                             4   0.00%
+        │   │   │   ├── smp_public_key                                                            188   0.20%
+        │   │   │   ├── smp_public_key_periph                                                     388   0.42%
+        │   │   │   ├── smp_reset                                                                  70   0.08%
+        │   │   │   ├── smp_send.constprop.0                                                       60   0.06%
+        │   │   │   ├── smp_send_pairing_confirm                                                  176   0.19%
+        │   │   │   ├── smp_send_pairing_random                                                    50   0.05%
+        │   │   │   ├── smp_timeout                                                                76   0.08%
+        │   │   │   └── update_keys_check                                                          66   0.07%
+        │   │   └── uuid.c                                                                        271   0.29%
+        │   │       ├── bt_uuid_cmp                                                                92   0.10%
+        │   │       ├── bt_uuid_create                                                             54   0.06%
+        │   │       ├── uuid128_base                                                               17   0.02%
+        │   │       └── uuid_to_uuid128                                                           108   0.12%
+        │   └── services                                                                          861   0.93%
+        │       ├── bas.c                                                                         321   0.35%
+        │       │   ├── __init_bas_init                                                             8   0.01%
+        │       │   ├── attr_bas                                                                   80   0.09%
+        │       │   ├── bas                                                                         8   0.01%
+        │       │   ├── bas_init                                                                    4   0.00%
+        │       │   ├── battery_level                                                               1   0.00%
+        │       │   ├── blvl_ccc_cfg_changed                                                       80   0.09%
+        │       │   ├── bt_bas_get_battery_level                                                   12   0.01%
+        │       │   ├── bt_bas_set_battery_level                                                   80   0.09%
+        │       │   ├── log_const_bas                                                               8   0.01%
+        │       │   └── read_blvl                                                                  40   0.04%
+        │       ├── dis.c                                                                         168   0.18%
+        │       │   ├── attr_dis_svc                                                              100   0.11%
+        │       │   ├── dis_svc                                                                     8   0.01%
+        │       │   ├── log_const_bt_dis                                                            8   0.01%
+        │       │   └── read_str                                                                   52   0.06%
+        │       └── hrs.c                                                                         372   0.40%
+        │           ├── __init_hrs_init                                                             8   0.01%
+        │           ├── attr_hrs_svc                                                              160   0.17%
+        │           ├── bt_hrs_notify                                                              64   0.07%
+        │           ├── hrmc_ccc_cfg_changed                                                       80   0.09%
+        │           ├── hrs_init                                                                   16   0.02%
+        │           ├── hrs_svc                                                                     8   0.01%
+        │           ├── log_const_hrs                                                               8   0.01%
+        │           └── read_blsc                                                                  28   0.03%
+        ├── logging                                                                              3216   3.46%
+        │   ├── backends                                                                          186   0.20%
+        │   │   └── log_backend_uart.c                                                            186   0.20%
+        │   │       ├── char_out                                                                   36   0.04%
+        │   │       ├── dropped                                                                    12   0.01%
+        │   │       ├── format_set                                                                 12   0.01%
+        │   │       ├── log_backend_uart                                                           16   0.02%
+        │   │       ├── log_backend_uart_api                                                       28   0.03%
+        │   │       ├── log_backend_uart_init                                                       2   0.00%
+        │   │       ├── log_const_log_uart                                                          8   0.01%
+        │   │       ├── log_output_uart                                                            16   0.02%
+        │   │       ├── panic                                                                      20   0.02%
+        │   │       └── process                                                                    36   0.04%
+        │   ├── log_core.c                                                                       1432   1.54%
+        │   │   ├── __init_enable_logger                                                            8   0.01%
+        │   │   ├── activate_foreach_backend                                                      100   0.11%
+        │   │   ├── default_lf_get_timestamp                                                       16   0.02%
+        │   │   ├── dropped_notify                                                                 48   0.05%
+        │   │   ├── dummy_timestamp                                                                 4   0.00%
+        │   │   ├── enable_logger                                                                  92   0.10%
+        │   │   ├── format_table                                                                   16   0.02%
+        │   │   ├── log_buffer                                                                     64   0.07%
+        │   │   ├── log_const_log                                                                   8   0.01%
+        │   │   ├── log_core_init                                                                  44   0.05%
+        │   │   ├── log_format_func_t_get                                                          12   0.01%
+        │   │   ├── log_msg_ptr                                                                     4   0.00%
+        │   │   ├── log_process_thread_func                                                       156   0.17%
+        │   │   ├── log_process_thread_sem                                                         24   0.03%
+        │   │   ├── log_process_thread_timer_expiry_fn                                             12   0.01%
+        │   │   ├── log_set_timestamp_func                                                         32   0.03%
+        │   │   ├── mpsc_config                                                                    20   0.02%
+        │   │   ├── timestamp_func                                                                  4   0.00%
+        │   │   ├── z_impl_log_panic                                                               68   0.07%
+        │   │   ├── z_impl_log_process                                                            176   0.19%
+        │   │   ├── z_log_dropped                                                                  48   0.05%
+        │   │   ├── z_log_dropped_read_and_clear                                                   32   0.03%
+        │   │   ├── z_log_get_tag                                                                   4   0.00%
+        │   │   ├── z_log_init                                                                    140   0.15%
+        │   │   ├── z_log_msg_alloc                                                                16   0.02%
+        │   │   ├── z_log_msg_commit                                                               36   0.04%
+        │   │   ├── z_log_msg_free                                                                 16   0.02%
+        │   │   ├── z_log_msg_init                                                                 32   0.03%
+        │   │   ├── z_log_msg_local_claim                                                          12   0.01%
+        │   │   ├── z_log_msg_pending                                                              12   0.01%
+        │   │   ├── z_log_msg_post_finalize                                                       120   0.13%
+        │   │   ├── z_log_notify_backend_enabled                                                   28   0.03%
+        │   │   └── z_log_vprintk                                                                  28   0.03%
+        │   ├── log_mgmt.c                                                                         76   0.08%
+        │   │   ├── log_backend_enable                                                             40   0.04%
+        │   │   ├── log_const_log_mgmt                                                              8   0.01%
+        │   │   └── log_source_name_get                                                            28   0.03%
+        │   ├── log_msg.c                                                                         368   0.40%
+        │   │   ├── z_impl_z_log_msg_runtime_vcreate                                              148   0.16%
+        │   │   ├── z_impl_z_log_msg_static_create                                                168   0.18%
+        │   │   └── z_log_msg_finalize                                                             52   0.06%
+        │   └── log_output.c                                                                     1154   1.24%
+        │       ├── buffer_write                                                                   26   0.03%
+        │       ├── colors                                                                         20   0.02%
+        │       ├── cr_out_func                                                                    28   0.03%
+        │       ├── log_output_dropped_process                                                     88   0.09%
+        │       ├── log_output_flush                                                               26   0.03%
+        │       ├── log_output_msg_process                                                        108   0.12%
+        │       ├── log_output_process                                                            676   0.73%
+        │       ├── log_output_timestamp_freq_set                                                  44   0.05%
+        │       ├── newline_print                                                                  28   0.03%
+        │       ├── out_func                                                                       54   0.06%
+        │       ├── print_formatted                                                                36   0.04%
+        │       └── severity                                                                       20   0.02%
+        └── net                                                                                   842   0.91%
+            └── buf.c                                                                             842   0.91%
+                ├── fixed_data_alloc                                                               48   0.05%
+                ├── fixed_data_unref                                                                2   0.00%
+                ├── log_const_net_buf                                                               8   0.01%
+                ├── net_buf_alloc_fixed                                                            10   0.01%
+                ├── net_buf_alloc_len                                                             292   0.31%
+                ├── net_buf_frag_add                                                               34   0.04%
+                ├── net_buf_frag_insert                                                            22   0.02%
+                ├── net_buf_frag_last                                                              12   0.01%
+                ├── net_buf_get                                                                     4   0.00%
+                ├── net_buf_id                                                                     32   0.03%
+                ├── net_buf_pool_get                                                               16   0.02%
+                ├── net_buf_put                                                                     4   0.00%
+                ├── net_buf_ref                                                                     8   0.01%
+                ├── net_buf_simple_add                                                             12   0.01%
+                ├── net_buf_simple_add_mem                                                         18   0.02%
+                ├── net_buf_simple_add_u8                                                          16   0.02%
+                ├── net_buf_simple_headroom                                                         8   0.01%
+                ├── net_buf_simple_pull                                                            16   0.02%
+                ├── net_buf_simple_pull_le16                                                       16   0.02%
+                ├── net_buf_simple_pull_mem                                                        16   0.02%
+                ├── net_buf_simple_push                                                            16   0.02%
+                ├── net_buf_simple_push_u8                                                         18   0.02%
+                ├── net_buf_simple_reserve                                                          8   0.01%
+                ├── net_buf_simple_tailroom                                                        16   0.02%
+                ├── net_buf_slist_get                                                              46   0.05%
+                ├── net_buf_slist_put                                                              44   0.05%
+                └── net_buf_unref                                                                 100   0.11%
+==============================================================================================================
+                                                                                                92994

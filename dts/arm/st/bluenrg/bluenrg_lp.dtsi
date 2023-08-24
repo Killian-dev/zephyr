@@ -14,7 +14,7 @@
  #include <arm/armv6-m.dtsi>
  #include <dt-bindings/gpio/gpio.h>
  #include <dt-bindings/clock/bluenrg_lp_clock.h>
- #include <zephyr/dt-bindings/reset/stm32l0_reset.h>
+ #include <zephyr/dt-bindings/reset/bluenrg_lp_reset.h>
  
  / {
 
@@ -114,8 +114,7 @@
                 gpio-controller;
                 #gpio-cells = <2>;
                 reg = <0x48000000 DT_SIZE_K(1)>;
-                //clocks = <&rcc BLUENRG_LP_CLOCK_PERIPH_GPIO 0x00000001>;
-				clocks = <&rcc 0x0D 0x00000001>; // à modifier
+				clocks = <&rcc BLUENRG_CLOCK_BUS_AHB0 0x00000004>; // AHB0 macro cells clock enable register (RCC_AHBENR)
             };
             // gpiob : cells à vérif
             gpiob: gpio@48100000 {
@@ -123,8 +122,7 @@
                 gpio-controller;
                 #gpio-cells = <2>;
                 reg = <0x48100000 DT_SIZE_K(1)>;
-                //clocks = <&rcc BLUENRG_LP_CLOCK_PERIPH_GPIO 0x00000002>;
-                clocks = <&rcc 0x0D 0x00000001>; // à modifier
+                clocks = <&rcc BLUENRG_CLOCK_BUS_AHB0 0x00000008>; // AHB0 macro cells clock enable register (RCC_AHBENR)
             };
         };
 
@@ -134,10 +132,9 @@
             compatible = "st,stm32-usart", "st,stm32-uart";
             //compatible = "st,bluenrg_lp-uart";
             reg = <0x41004000 DT_SIZE_K(1)>;
-            clocks = <&rcc BLUENRG_CLOCK_BUS_APB1 0x00020000>;  //bluenrg_lp_clock.h
-            resets = <&rctl STM32_RESET(APB1, 10U)>;            // p73/515 RM0479
+            clocks = <&rcc BLUENRG_CLOCK_BUS_APB1 0x00000400>;  //bluenrg_lp_clock.h
+            resets = <&rctl BLUENRG_RESET(APB1, 10U)>;            // p73/515 RM0479
             interrupts = <8 0>;
-            //wakeup-source;
             status = "disabled";
         };
 
