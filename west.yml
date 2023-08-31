@@ -16,13 +16,15 @@
 
 manifest:
   defaults:
-    remote: bluenrglp_zephyr
+    remote: upstream
 
   remotes:
     - name: upstream
       url-base: https://github.com/zephyrproject-rtos
     - name: babblesim
       url-base: https://github.com/BabbleSim
+    - name: bluenrg_hal
+      url-base: https://github.com/Killian-dev
 
   group-filter: [-babblesim]
 
@@ -233,9 +235,10 @@ manifest:
       path: modules/hal/stm32
       groups:
         - hal
-    - name: hal_st_bluenrg
-      revision: 4fb1410ddebe6ebe44a68aa8a3ea97da8b6f6d44
+    - name: zephyrproject_modules_hal_bluenrg
+      revision: dd8ca80f71c7354afbe824beeff15f7ce4bd3070
       path: modules/hal/st_bluenrg
+      remote: bluenrg_hal
       groups:
         - hal
     - name: hal_telink
