@@ -22,7 +22,7 @@
 
 #else
 
-#include <zephyr/arch/arm/aarch32/cortex_m/cmsis.h>
+#include <cmsis_core.h>
 #include <zephyr/arch/arm/aarch32/exc.h>
 #include <zephyr/irq_offload.h>
 
@@ -112,7 +112,9 @@ static ALWAYS_INLINE void z_arm_exc_setup(void)
 	NVIC_SetPriority(MemoryManagement_IRQn, _EXC_FAULT_PRIO);
 	NVIC_SetPriority(BusFault_IRQn, _EXC_FAULT_PRIO);
 	NVIC_SetPriority(UsageFault_IRQn, _EXC_FAULT_PRIO);
-#if defined(CONFIG_CPU_CORTEX_M_HAS_DWT)
+#if defined(CONFIG_CORTEX_M_DEBUG_MONITOR_HOOK)
+	NVIC_SetPriority(DebugMonitor_IRQn, IRQ_PRIO_LOWEST);
+#elif defined(CONFIG_CPU_CORTEX_M_HAS_DWT)
 	NVIC_SetPriority(DebugMonitor_IRQn, _EXC_FAULT_PRIO);
 #endif
 #if defined(CONFIG_ARM_SECURE_FIRMWARE)

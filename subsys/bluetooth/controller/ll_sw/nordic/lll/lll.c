@@ -470,10 +470,7 @@ uint32_t lll_preempt_calc(struct ull_hdr *ull, uint8_t ticker_id,
 		 *    duration.
 		 * 3. Increase the preempt to start ticks for future events.
 		 */
-		LL_ASSERT_MSG(false, "%s: Actual EVENT_OVERHEAD_START_US = %u",
-			      __func__, HAL_TICKER_TICKS_TO_US(diff));
-
-		return 1U;
+		return diff;
 	}
 
 	return 0U;
@@ -555,6 +552,28 @@ void lll_isr_rx_status_reset(void)
 	radio_status_reset();
 	radio_tmr_status_reset();
 	radio_rssi_status_reset();
+
+	if (IS_ENABLED(HAL_RADIO_GPIO_HAVE_PA_PIN) ||
+	    IS_ENABLED(HAL_RADIO_GPIO_HAVE_LNA_PIN)) {
+		radio_gpio_pa_lna_disable();
+	}
+}
+
+void lll_isr_tx_sub_status_reset(void)
+{
+	radio_status_reset();
+	radio_tmr_tx_status_reset();
+
+	if (IS_ENABLED(HAL_RADIO_GPIO_HAVE_PA_PIN) ||
+	    IS_ENABLED(HAL_RADIO_GPIO_HAVE_LNA_PIN)) {
+		radio_gpio_pa_lna_disable();
+	}
+}
+
+void lll_isr_rx_sub_status_reset(void)
+{
+	radio_status_reset();
+	radio_tmr_rx_status_reset();
 
 	if (IS_ENABLED(HAL_RADIO_GPIO_HAVE_PA_PIN) ||
 	    IS_ENABLED(HAL_RADIO_GPIO_HAVE_LNA_PIN)) {
@@ -736,6 +755,11 @@ int lll_prepare_resolve(lll_is_abort_cb_t is_abort_cb, lll_abort_cb_t abort_cb,
 
 	err = prepare_cb(prepare_param);
 
+	if (!IS_ENABLED(CONFIG_BT_CTLR_ASSERT_OVERHEAD_START) &&
+	    (err == -ECANCELED)) {
+		err = 0;
+	}
+
 #if !defined(CONFIG_BT_CTLR_LOW_LAT)
 	uint32_t ret;
 
@@ -894,8 +918,8 @@ static uint32_t preempt_ticker_start(struct lll_event *first,
 			   TICKER_NULL_REMAINDER,
 			   TICKER_NULL_LAZY,
 			   TICKER_NULL_SLOT,
-			   preempt_ticker_cb, first,
-			   ticker_start_op_cb, first);
+			   preempt_ticker_cb, first->prepare_param.param,
+			   ticker_start_op_cb, NULL);
 
 	return ret;
 }
@@ -971,7 +995,7 @@ static void preempt(void *param)
 	}
 
 	/* Preemptor not in pipeline */
-	if (next != param) {
+	if (next->prepare_param.param != param) {
 		uint32_t ret;
 
 		/* Start the preempt timeout */

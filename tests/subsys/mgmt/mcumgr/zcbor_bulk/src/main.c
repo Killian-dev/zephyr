@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Nordic Semiconductor ASA
+ * Copyright (c) 2022-2023 Nordic Semiconductor ASA
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -12,6 +12,28 @@
 
 #define zcbor_true_put(zse) zcbor_bool_put(zse, true)
 
+ZTEST(zcbor_bulk, test_ZCBOR_MAP_DECODE_KEY_DECODER)
+{
+	struct zcbor_string world;
+	struct zcbor_map_decode_key_val map_one[] = {
+		ZCBOR_MAP_DECODE_KEY_DECODER("hello", zcbor_tstr_decode, &world),
+	};
+	/* ZCBOR_MAP_DECODE_KEY_DECODER should not be used but is still provided */
+	struct zcbor_map_decode_key_val map_two[] = {
+		ZCBOR_MAP_DECODE_KEY_VAL(hello, zcbor_tstr_decode, &world),
+	};
+
+	zassert_ok(strcmp(map_one[0].key.value, "hello"));
+	zassert_equal(map_one[0].key.len, sizeof("hello") - 1);
+	zassert_equal((void *)map_one[0].decoder, (void *)&zcbor_tstr_decode);
+	zassert_equal((void *)map_one[0].value_ptr, (void *)&world);
+	/* Both maps should be the same */
+	zassert_ok(strcmp(map_one[0].key.value, map_two[0].key.value));
+	zassert_equal(map_one[0].key.len, map_two[0].key.len);
+	zassert_equal(map_one[0].decoder, map_two[0].decoder);
+	zassert_equal(map_one[0].value_ptr, map_two[0].value_ptr);
+}
+
 ZTEST(zcbor_bulk, test_correct)
 {
 	uint8_t buffer[512];
@@ -22,9 +44,9 @@ ZTEST(zcbor_bulk, test_correct)
 	size_t decoded = 0;
 	bool ok;
 	struct zcbor_map_decode_key_val dm[] = {
-		ZCBOR_MAP_DECODE_KEY_VAL(hello, zcbor_tstr_decode, &world),
-		ZCBOR_MAP_DECODE_KEY_VAL(one, zcbor_uint32_decode, &one),
-		ZCBOR_MAP_DECODE_KEY_VAL(bool_val, zcbor_bool_decode, &bool_val)
+		ZCBOR_MAP_DECODE_KEY_DECODER("hello", zcbor_tstr_decode, &world),
+		ZCBOR_MAP_DECODE_KEY_DECODER("one", zcbor_uint32_decode, &one),
+		ZCBOR_MAP_DECODE_KEY_DECODER("bool val", zcbor_bool_decode, &bool_val)
 	};
 
 	zcbor_new_encode_state(zsd, 2, buffer, ARRAY_SIZE(buffer), 0);
@@ -33,7 +55,7 @@ ZTEST(zcbor_bulk, test_correct)
 	ok = zcbor_map_start_encode(zsd, 10) &&
 	     zcbor_tstr_put_lit(zsd, "hello") && zcbor_tstr_put_lit(zsd, "world")	&&
 	     zcbor_tstr_put_lit(zsd, "one") && zcbor_uint32_put(zsd, 1)			&&
-	     zcbor_tstr_put_lit(zsd, "bool_val") && zcbor_true_put(zsd)			&&
+	     zcbor_tstr_put_lit(zsd, "bool val") && zcbor_true_put(zsd)			&&
 	     zcbor_map_end_encode(zsd, 10);
 
 	zassert_true(ok, "Expected to be successful in encoding test pattern");
@@ -50,7 +72,7 @@ ZTEST(zcbor_bulk, test_correct)
 		sizeof("world") - 1);
 	zassert_equal(0, memcmp(world.value, "world", world.len),
 		"Expected \"world\", got %.*s", world.len, world.value);
-	zassert_true(bool_val, "Expected bool_val == true");
+	zassert_true(bool_val, "Expected bool val == true");
 }
 
 ZTEST(zcbor_bulk, test_correct_out_of_order)
@@ -63,16 +85,16 @@ ZTEST(zcbor_bulk, test_correct_out_of_order)
 	size_t decoded = 0;
 	bool ok;
 	struct zcbor_map_decode_key_val dm[] = {
-		ZCBOR_MAP_DECODE_KEY_VAL(hello, zcbor_tstr_decode, &world),
-		ZCBOR_MAP_DECODE_KEY_VAL(one, zcbor_uint32_decode, &one),
-		ZCBOR_MAP_DECODE_KEY_VAL(bool_val, zcbor_bool_decode, &bool_val)
+		ZCBOR_MAP_DECODE_KEY_DECODER("hello", zcbor_tstr_decode, &world),
+		ZCBOR_MAP_DECODE_KEY_DECODER("one", zcbor_uint32_decode, &one),
+		ZCBOR_MAP_DECODE_KEY_DECODER("bool val", zcbor_bool_decode, &bool_val)
 	};
 
 	zcbor_new_encode_state(zsd, 2, buffer, ARRAY_SIZE(buffer), 0);
 
 	/* { "hello":"world", "one":1, "bool_val":true } */
 	ok = zcbor_map_start_encode(zsd, 10) &&
-	     zcbor_tstr_put_lit(zsd, "bool_val") && zcbor_true_put(zsd)			&&
+	     zcbor_tstr_put_lit(zsd, "bool val") && zcbor_true_put(zsd)			&&
 	     zcbor_tstr_put_lit(zsd, "one") && zcbor_uint32_put(zsd, 1)			&&
 	     zcbor_tstr_put_lit(zsd, "hello") && zcbor_tstr_put_lit(zsd, "world")	&&
 	     zcbor_map_end_encode(zsd, 10);
@@ -91,7 +113,7 @@ ZTEST(zcbor_bulk, test_correct_out_of_order)
 		sizeof("world") - 1);
 	zassert_equal(0, memcmp(world.value, "world", world.len),
 		"Expected \"world\", got %.*s", world.len, world.value);
-	zassert_true(bool_val, "Expected bool_val == true");
+	zassert_true(bool_val, "Expected bool val == true");
 }
 
 ZTEST(zcbor_bulk, test_not_map)
@@ -104,9 +126,9 @@ ZTEST(zcbor_bulk, test_not_map)
 	size_t decoded = 1111;
 	bool ok;
 	struct zcbor_map_decode_key_val dm[] = {
-		ZCBOR_MAP_DECODE_KEY_VAL(hello, zcbor_tstr_decode, &world),
-		ZCBOR_MAP_DECODE_KEY_VAL(one, zcbor_uint32_decode, &one),
-		ZCBOR_MAP_DECODE_KEY_VAL(bool_val, zcbor_bool_decode, &bool_val)
+		ZCBOR_MAP_DECODE_KEY_DECODER("hello", zcbor_tstr_decode, &world),
+		ZCBOR_MAP_DECODE_KEY_DECODER("one", zcbor_uint32_decode, &one),
+		ZCBOR_MAP_DECODE_KEY_DECODER("bool val", zcbor_bool_decode, &bool_val)
 	};
 
 	zcbor_new_encode_state(zsd, 2, buffer, ARRAY_SIZE(buffer), 0);
@@ -137,9 +159,9 @@ ZTEST(zcbor_bulk, test_bad_type)
 	bool ok;
 	struct zcbor_map_decode_key_val dm[] = {
 		/* First entry has bad decoder given instead of tstr */
-		ZCBOR_MAP_DECODE_KEY_VAL(hello, zcbor_uint32_decode, &world),
-		ZCBOR_MAP_DECODE_KEY_VAL(one, zcbor_uint32_decode, &one),
-		ZCBOR_MAP_DECODE_KEY_VAL(bool_val, zcbor_bool_decode, &bool_val)
+		ZCBOR_MAP_DECODE_KEY_DECODER("hello", zcbor_uint32_decode, &world),
+		ZCBOR_MAP_DECODE_KEY_DECODER("one", zcbor_uint32_decode, &one),
+		ZCBOR_MAP_DECODE_KEY_DECODER("bool val", zcbor_bool_decode, &bool_val)
 	};
 
 	zcbor_new_encode_state(zsd, 2, buffer, ARRAY_SIZE(buffer), 0);
@@ -148,7 +170,7 @@ ZTEST(zcbor_bulk, test_bad_type)
 	ok = zcbor_map_start_encode(zsd, 10) &&
 	     zcbor_tstr_put_lit(zsd, "hello") && zcbor_tstr_put_lit(zsd, "world")	&&
 	     zcbor_tstr_put_lit(zsd, "one") && zcbor_uint32_put(zsd, 1)			&&
-	     zcbor_tstr_put_lit(zsd, "bool_val") && zcbor_true_put(zsd)			&&
+	     zcbor_tstr_put_lit(zsd, "bool val") && zcbor_true_put(zsd)			&&
 	     zcbor_map_end_encode(zsd, 10);
 
 	zassert_true(ok, "Expected to be successful in encoding test pattern");
@@ -161,7 +183,7 @@ ZTEST(zcbor_bulk, test_bad_type)
 	zassert_equal(decoded, 0, "Expected 0 got %d", decoded);
 	zassert_equal(one, 0, "Expected 0");
 	zassert_equal(0, world.len, "Expected to be unmodified");
-	zassert_false(bool_val, "Expected bool_val == false");
+	zassert_false(bool_val, "Expected bool val == false");
 }
 
 ZTEST(zcbor_bulk, test_bad_type_2)
@@ -174,10 +196,10 @@ ZTEST(zcbor_bulk, test_bad_type_2)
 	size_t decoded = 0;
 	bool ok;
 	struct zcbor_map_decode_key_val dm[] = {
-		ZCBOR_MAP_DECODE_KEY_VAL(hello, zcbor_tstr_decode, &world),
-		ZCBOR_MAP_DECODE_KEY_VAL(one, zcbor_uint32_decode, &one),
+		ZCBOR_MAP_DECODE_KEY_DECODER("hello", zcbor_tstr_decode, &world),
+		ZCBOR_MAP_DECODE_KEY_DECODER("one", zcbor_uint32_decode, &one),
 		/* This is bad decoder for type bool */
-		ZCBOR_MAP_DECODE_KEY_VAL(bool_val, zcbor_tstr_decode, &bool_val)
+		ZCBOR_MAP_DECODE_KEY_DECODER("bool val", zcbor_tstr_decode, &bool_val)
 	};
 
 	zcbor_new_encode_state(zsd, 2, buffer, ARRAY_SIZE(buffer), 0);
@@ -186,7 +208,7 @@ ZTEST(zcbor_bulk, test_bad_type_2)
 	ok = zcbor_map_start_encode(zsd, 10) &&
 	     zcbor_tstr_put_lit(zsd, "hello") && zcbor_tstr_put_lit(zsd, "world")	&&
 	     zcbor_tstr_put_lit(zsd, "one") && zcbor_uint32_put(zsd, 1)			&&
-	     zcbor_tstr_put_lit(zsd, "bool_val") && zcbor_true_put(zsd)			&&
+	     zcbor_tstr_put_lit(zsd, "bool val") && zcbor_true_put(zsd)			&&
 	     zcbor_map_end_encode(zsd, 10);
 
 	zcbor_new_decode_state(zsd, 4, buffer, ARRAY_SIZE(buffer), 1);
@@ -201,7 +223,7 @@ ZTEST(zcbor_bulk, test_bad_type_2)
 		sizeof("world") - 1);
 	zassert_equal(0, memcmp(world.value, "world", world.len),
 		"Expected \"world\", got %.*s", world.len, world.value);
-	zassert_false(bool_val, "Expected bool_val unmodified");
+	zassert_false(bool_val, "Expected bool val unmodified");
 }
 
 ZTEST(zcbor_bulk, test_bad_type_encoded)
@@ -214,9 +236,9 @@ ZTEST(zcbor_bulk, test_bad_type_encoded)
 	size_t decoded = 0;
 	bool ok;
 	struct zcbor_map_decode_key_val dm[] = {
-		ZCBOR_MAP_DECODE_KEY_VAL(hello, zcbor_tstr_decode, &world),
-		ZCBOR_MAP_DECODE_KEY_VAL(one, zcbor_uint32_decode, &one),
-		ZCBOR_MAP_DECODE_KEY_VAL(bool_val, zcbor_bool_decode, &bool_val)
+		ZCBOR_MAP_DECODE_KEY_DECODER("hello", zcbor_tstr_decode, &world),
+		ZCBOR_MAP_DECODE_KEY_DECODER("one", zcbor_uint32_decode, &one),
+		ZCBOR_MAP_DECODE_KEY_DECODER("bool val", zcbor_bool_decode, &bool_val)
 	};
 
 	zcbor_new_encode_state(zsd, 2, buffer, ARRAY_SIZE(buffer), 0);
@@ -225,7 +247,7 @@ ZTEST(zcbor_bulk, test_bad_type_encoded)
 	ok = zcbor_map_start_encode(zsd, 10) &&
 	     zcbor_tstr_put_lit(zsd, "hello") && zcbor_uint32_put(zsd, 10)		&&
 	     zcbor_tstr_put_lit(zsd, "one") && zcbor_uint32_put(zsd, 1)			&&
-	     zcbor_tstr_put_lit(zsd, "bool_val") && zcbor_true_put(zsd)			&&
+	     zcbor_tstr_put_lit(zsd, "bool val") && zcbor_true_put(zsd)			&&
 	     zcbor_map_end_encode(zsd, 10);
 
 	zassert_true(ok, "Expected to be successful in encoding test pattern");
@@ -238,7 +260,7 @@ ZTEST(zcbor_bulk, test_bad_type_encoded)
 	zassert_equal(decoded, 0, "Expected 0 got %d", decoded);
 	zassert_equal(one, 0, "Expected 0");
 	zassert_equal(0, world.len, "Expected to be unmodified");
-	zassert_false(bool_val, "Expected bool_val == false");
+	zassert_false(bool_val, "Expected bool val == false");
 }
 
 ZTEST(zcbor_bulk, test_duplicate)
@@ -252,9 +274,9 @@ ZTEST(zcbor_bulk, test_duplicate)
 	size_t decoded = 0;
 	bool ok;
 	struct zcbor_map_decode_key_val dm[] = {
-		ZCBOR_MAP_DECODE_KEY_VAL(hello, zcbor_tstr_decode, &world),
-		ZCBOR_MAP_DECODE_KEY_VAL(one, zcbor_uint32_decode, &one),
-		ZCBOR_MAP_DECODE_KEY_VAL(bool_val, zcbor_bool_decode, &bool_val)
+		ZCBOR_MAP_DECODE_KEY_DECODER("hello", zcbor_tstr_decode, &world),
+		ZCBOR_MAP_DECODE_KEY_DECODER("one", zcbor_uint32_decode, &one),
+		ZCBOR_MAP_DECODE_KEY_DECODER("bool val", zcbor_bool_decode, &bool_val)
 	};
 
 	zcbor_new_encode_state(zsd, 2, buffer, ARRAY_SIZE(buffer), 0);
@@ -277,7 +299,7 @@ ZTEST(zcbor_bulk, test_duplicate)
 		sizeof("world") - 1);
 	zassert_equal(0, memcmp(world.value, "world", world.len),
 		"Expected \"world\", got %.*s", world.len, world.value);
-	zassert_false(bool_val, "Expected bool_val unmodified");
+	zassert_false(bool_val, "Expected bool val unmodified");
 }
 
 struct in_map_decoding {
@@ -436,4 +458,91 @@ ZTEST(zcbor_bulk, test_map_in_map_bad)
 	zassert_equal(imdd.decoded, 1, "Expected 1 item before failure");
 	zassert_equal(imdd.number, 30);
 }
+
+ZTEST(zcbor_bulk, test_key_found)
+{
+	uint8_t buffer[512];
+	struct zcbor_string world;
+	uint32_t one = 0;
+	bool bool_val = false;
+	zcbor_state_t zsd[4] = { 0 };
+	size_t decoded = 0;
+	bool ok;
+	struct zcbor_map_decode_key_val dm[] = {
+		ZCBOR_MAP_DECODE_KEY_DECODER("hello", zcbor_tstr_decode, &world),
+		ZCBOR_MAP_DECODE_KEY_DECODER("one", zcbor_uint32_decode, &one),
+		ZCBOR_MAP_DECODE_KEY_DECODER("bool val", zcbor_bool_decode, &bool_val)
+	};
+
+	zcbor_new_encode_state(zsd, 2, buffer, ARRAY_SIZE(buffer), 0);
+
+	/* { "hello":"world", "bool val":true }, "one" is missing and will not be
+	 * found.
+	 */
+	ok = zcbor_map_start_encode(zsd, 10) &&
+	     zcbor_tstr_put_lit(zsd, "hello") && zcbor_tstr_put_lit(zsd, "world")	&&
+	     zcbor_tstr_put_lit(zsd, "bool val") && zcbor_true_put(zsd)			&&
+	     zcbor_map_end_encode(zsd, 10);
+
+	zassert_true(ok, "Expected to be successful in encoding test pattern");
+
+	zcbor_new_decode_state(zsd, 4, buffer, ARRAY_SIZE(buffer), 1);
+
+	int rc = zcbor_map_decode_bulk(zsd, dm, ARRAY_SIZE(dm), &decoded);
+
+	zassert_ok(rc, "Expected 0, got %d", rc);
+	zassert_equal(decoded, ARRAY_SIZE(dm) - 1, "Expected %d got %d",
+		ARRAY_SIZE(dm), decoded);
+
+	zassert_true(zcbor_map_decode_bulk_key_found(dm, ARRAY_SIZE(dm), "hello"),
+		     "Expected \"hello\"");
+	zassert_false(zcbor_map_decode_bulk_key_found(dm, ARRAY_SIZE(dm), "one"),
+		     "Unexpected \"one\"");
+	zassert_true(zcbor_map_decode_bulk_key_found(dm, ARRAY_SIZE(dm), "bool val"),
+		     "Expected \"bool val\"");
+}
+
+ZTEST(zcbor_bulk, test_reset)
+{
+	uint8_t buffer[512];
+	struct zcbor_string world;
+	uint32_t one = 0;
+	bool bool_val = false;
+	zcbor_state_t zsd[4] = { 0 };
+	size_t decoded = 0;
+	bool ok;
+	struct zcbor_map_decode_key_val dm[] = {
+		ZCBOR_MAP_DECODE_KEY_DECODER("hello", zcbor_tstr_decode, &world),
+		ZCBOR_MAP_DECODE_KEY_DECODER("one", zcbor_uint32_decode, &one),
+		ZCBOR_MAP_DECODE_KEY_DECODER("bool val", zcbor_bool_decode, &bool_val)
+	};
+
+	zcbor_new_encode_state(zsd, 2, buffer, ARRAY_SIZE(buffer), 0);
+
+	/* { "hello":"world", "one":1, "bool_val":true } */
+	ok = zcbor_map_start_encode(zsd, 10) &&
+	     zcbor_tstr_put_lit(zsd, "hello") && zcbor_tstr_put_lit(zsd, "world")	&&
+	     zcbor_tstr_put_lit(zsd, "one") && zcbor_uint32_put(zsd, 1)			&&
+	     zcbor_tstr_put_lit(zsd, "bool val") && zcbor_true_put(zsd)			&&
+	     zcbor_map_end_encode(zsd, 10);
+
+	zassert_true(ok, "Expected to be successful in encoding test pattern");
+
+	zcbor_new_decode_state(zsd, 4, buffer, ARRAY_SIZE(buffer), 1);
+
+	int rc = zcbor_map_decode_bulk(zsd, dm, ARRAY_SIZE(dm), &decoded);
+
+	zassert_ok(rc, "Expected 0, got %d", rc);
+
+	for (int i = 0; i < ARRAY_SIZE(dm); ++i) {
+		zassert_true(dm[i].found, "Expected found for index %d", i);
+	}
+
+	zcbor_map_decode_bulk_reset(dm, ARRAY_SIZE(dm));
+
+	for (int i = 0; i < ARRAY_SIZE(dm); ++i) {
+		zassert_false(dm[i].found, "Expected state reset for index %d", i);
+	}
+}
+
 ZTEST_SUITE(zcbor_bulk, NULL, NULL, NULL, NULL, NULL);

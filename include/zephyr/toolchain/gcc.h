@@ -70,11 +70,14 @@
 #define BUILD_ASSERT(EXPR, MSG...) static_assert(EXPR, "" MSG)
 
 /*
- * GCC 4.6 and higher have the C11 _Static_assert built in, and its
+ * GCC 4.6 and higher have the C11 _Static_assert built in and its
  * output is easier to understand than the common BUILD_ASSERT macros.
+ * Don't use this in C++98 mode though (which we can hit, as
+ * static_assert() is not available)
  */
-#elif (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 6)) || \
-	(__STDC_VERSION__) >= 201100
+#elif !defined(__cplusplus) && \
+	((__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 6)) ||	\
+	 (__STDC_VERSION__) >= 201100)
 #define BUILD_ASSERT(EXPR, MSG...) _Static_assert(EXPR, "" MSG)
 #else
 #define BUILD_ASSERT(EXPR, MSG...)
@@ -120,12 +123,12 @@
 #endif
 
 /* Unaligned access */
-#define UNALIGNED_GET(p)						\
+#define UNALIGNED_GET(g)						\
 __extension__ ({							\
 	struct  __attribute__((__packed__)) {				\
-		__typeof__(*(p)) __v;					\
-	} *__p = (__typeof__(__p)) (p);					\
-	__p->__v;							\
+		__typeof__(*(g)) __v;					\
+	} *__g = (__typeof__(__g)) (g);					\
+	__g->__v;							\
 })
 
 
@@ -250,7 +253,7 @@ do {                                                                    \
 
 #define likely(x)   (__builtin_expect((bool)!!(x), true) != 0L)
 #define unlikely(x) (__builtin_expect((bool)!!(x), false) != 0L)
-#define popcount(x) __builtin_popcount(x)
+#define POPCOUNT(x) __builtin_popcount(x)
 
 #ifndef __no_optimization
 #define __no_optimization __attribute__((optimize("-O0")))
@@ -309,7 +312,7 @@ do {                                                                    \
 
 #else
 
-#define FUNC_CODE() .code 32
+#define FUNC_CODE() .code 32;
 #define FUNC_INSTR(a)
 
 #endif /* CONFIG_ASSEMBLER_ISA_THUMB2 */
@@ -624,6 +627,24 @@ do {                                                                    \
 #else
 #define __noasan /**/
 #endif
+
+/**
+ * @brief Function attribute to disable stack protector.
+ *
+ * @note Only supported for GCC >= 11.0.0 or Clang >= 7.
+ */
+#if (TOOLCHAIN_GCC_VERSION >= 110000) || (TOOLCHAIN_CLANG_VERSION >= 70000)
+#define FUNC_NO_STACK_PROTECTOR __attribute__((no_stack_protector))
+#else
+#define FUNC_NO_STACK_PROTECTOR
+#endif
+
+#define TOOLCHAIN_IGNORE_WSHADOW_BEGIN \
+	_Pragma("GCC diagnostic push") \
+	_Pragma("GCC diagnostic ignored \"-Wshadow\"")
+
+#define TOOLCHAIN_IGNORE_WSHADOW_END \
+	_Pragma("GCC diagnostic pop")
 
 #endif /* !_LINKER */
 #endif /* ZEPHYR_INCLUDE_TOOLCHAIN_GCC_H_ */
