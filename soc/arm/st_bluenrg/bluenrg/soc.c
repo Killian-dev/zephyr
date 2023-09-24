@@ -31,21 +31,19 @@
  */
 static int bluenrg_init(const struct device *arg)
 {
-	uint32_t key;
+	//uint32_t key;
 
 	ARG_UNUSED(arg);
 
-	key = irq_lock();
+	//key = irq_lock();
 
 	/* Install default handler that simply resets the CPU
 	 * if configured in the kernel, NOP otherwise
 	 */
-	NMI_INIT();
+	//NMI_INIT();
 
-	irq_unlock(key);
-	
-	/* enable clock */
-	// LL_Power à ajouter (pour le sleep mode donc pas obligé mtn)
+	//irq_unlock(key);
+
 	// // BEGIN of SystemInit() 
 	LL_PWR_EnableRAMBankRet(LL_PWR_RAMRET_1);
 	// BEGIN of SmpsTrimConfig() 
@@ -149,35 +147,35 @@ static int bluenrg_init(const struct device *arg)
 	LL_APB1_EnableClock(0x400UL);
 
 	// /* Configure IO in output */
-	// LL_GPIO_SetPinMode(GPIOB, LL_GPIO_PIN_8, LL_GPIO_MODE_OUTPUT);
-	// /* Reset value is LL_GPIO_OUTPUT_PUSHPULL */
-	// LL_GPIO_SetPinOutputType(GPIOB, LL_GPIO_PIN_8, LL_GPIO_OUTPUT_PUSHPULL);
-	// /* Reset value is LL_GPIO_SPEED_FREQ_LOW */
-	// LL_GPIO_SetPinSpeed(GPIOB, LL_GPIO_PIN_8, LL_GPIO_SPEED_FREQ_LOW);
-	// /* Reset value is LL_GPIO_PULL_NO */
-	// LL_GPIO_SetPinPull(GPIOB, LL_GPIO_PIN_8, LL_GPIO_PULL_NO);
-	// // END Configure_GPIO()
+	LL_GPIO_SetPinMode(GPIOB, LL_GPIO_PIN_8, LL_GPIO_MODE_OUTPUT);
+	/* Reset value is LL_GPIO_OUTPUT_PUSHPULL */
+	LL_GPIO_SetPinOutputType(GPIOB, LL_GPIO_PIN_8, LL_GPIO_OUTPUT_PUSHPULL);
+	/* Reset value is LL_GPIO_SPEED_FREQ_LOW */
+	LL_GPIO_SetPinSpeed(GPIOB, LL_GPIO_PIN_8, LL_GPIO_SPEED_FREQ_LOW);
+	/* Reset value is LL_GPIO_PULL_NO */
+	LL_GPIO_SetPinPull(GPIOB, LL_GPIO_PIN_8, LL_GPIO_PULL_NO);
+	// END Configure_GPIO()
 
 
 	// BEGIN MX_GPIO_Init()
 	LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
 	/* LED2 GPIO CLK ENABLE */
-	// LL_AHB_EnableClock(LL_AHB_PERIPH_GPIOB);
+	LL_AHB_EnableClock(LL_AHB_PERIPH_GPIOB);
 
-	// LL_GPIO_SetOutputPin(GPIOB, LL_GPIO_PIN_8);
-	// GPIO_InitStruct.Pin = LL_GPIO_PIN_8;
-	// GPIO_InitStruct.Mode = LL_GPIO_MODE_OUTPUT;
-	// GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
-	// GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
-	// GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
-	// LL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+	LL_GPIO_SetOutputPin(GPIOB, LL_GPIO_PIN_8);
+	GPIO_InitStruct.Pin = LL_GPIO_PIN_8;
+	GPIO_InitStruct.Mode = LL_GPIO_MODE_OUTPUT;
+	GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
+	GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+	GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
+	LL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 	// END MX_GPIO_Init()
 
 	// BEGIN MX_USART_UART_Init()
-	// LL_USART_InitTypeDef USART_InitStruct = {0};
+	LL_USART_InitTypeDef USART_InitStruct = {0};
 
 	/* Peripheral clock enable */
-	// LL_APB1_EnableClock(LL_APB1_PERIPH_USART);
+	LL_APB1_EnableClock(LL_APB1_PERIPH_USART);
 
 	GPIO_InitStruct.Pin = LL_GPIO_PIN_9;
 	GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
@@ -187,88 +185,64 @@ static int bluenrg_init(const struct device *arg)
 	GPIO_InitStruct.Alternate = LL_GPIO_AF_0;
 	LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-	// GPIO_InitStruct.Pin = LL_GPIO_PIN_8;
-	// GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
-	// GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_HIGH;
-	// GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
-	// GPIO_InitStruct.Pull = LL_GPIO_PULL_UP;
-	// GPIO_InitStruct.Alternate = LL_GPIO_AF_0;
-	// LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+	GPIO_InitStruct.Pin = LL_GPIO_PIN_8;
+	GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
+	GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_HIGH;
+	GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+	GPIO_InitStruct.Pull = LL_GPIO_PULL_UP;
+	GPIO_InitStruct.Alternate = LL_GPIO_AF_0;
+	LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 
-	// USART_InitStruct.PrescalerValue = LL_USART_PRESCALER_DIV1;
-	// USART_InitStruct.BaudRate = 115200;
-	// USART_InitStruct.DataWidth = LL_USART_DATAWIDTH_8B;
-	// USART_InitStruct.StopBits = LL_USART_STOPBITS_1;
-	// USART_InitStruct.Parity = LL_USART_PARITY_NONE;
-	// USART_InitStruct.TransferDirection = LL_USART_DIRECTION_TX_RX;
-	// USART_InitStruct.HardwareFlowControl = LL_USART_HWCONTROL_NONE;
-	// USART_InitStruct.OverSampling = LL_USART_OVERSAMPLING_16;
+	USART_InitStruct.PrescalerValue = LL_USART_PRESCALER_DIV1;
+	USART_InitStruct.BaudRate = 115200;
+	USART_InitStruct.DataWidth = LL_USART_DATAWIDTH_8B;
+	USART_InitStruct.StopBits = LL_USART_STOPBITS_1;
+	USART_InitStruct.Parity = LL_USART_PARITY_NONE;
+	USART_InitStruct.TransferDirection = LL_USART_DIRECTION_TX_RX;
+	USART_InitStruct.HardwareFlowControl = LL_USART_HWCONTROL_NONE;
+	USART_InitStruct.OverSampling = LL_USART_OVERSAMPLING_16;
 
-	// LL_USART_Init(USART1, &USART_InitStruct);
-	// LL_USART_SetTXFIFOThreshold(USART1, LL_USART_FIFOTHRESHOLD_1_8);
-	// LL_USART_SetRXFIFOThreshold(USART1, LL_USART_FIFOTHRESHOLD_1_8);
+	LL_USART_Init(USART1, &USART_InitStruct);
+	LL_USART_SetTXFIFOThreshold(USART1, LL_USART_FIFOTHRESHOLD_1_8);
+	LL_USART_SetRXFIFOThreshold(USART1, LL_USART_FIFOTHRESHOLD_1_8);
 
-	// LL_USART_EnableFIFO(USART1);
-	// LL_USART_ConfigAsyncMode(USART1);
-	// LL_USART_Enable(USART1);
+	LL_USART_EnableFIFO(USART1);
+	LL_USART_ConfigAsyncMode(USART1);
+	LL_USART_Enable(USART1);
 
-	// /* Polling USART initialisation */
-	// while((!(LL_USART_IsActiveFlag_TEACK(USART1))) || (!(LL_USART_IsActiveFlag_REACK(USART1))))
-	// { 
-	// }
-	// // END MX_USART_UART_Init()
+	/* Polling USART initialisation */
+	while((!(LL_USART_IsActiveFlag_TEACK(USART1))) || (!(LL_USART_IsActiveFlag_REACK(USART1))))
+	{ 
+	}
+	// END MX_USART_UART_Init()
 
-	// uint8_t ubSend = 0;
-	// const uint8_t aStringToSend[] = "TEST\n\r";
-	// while (ubSend < sizeof(aStringToSend))
-	// {
-	// 	/* Wait for TXE flag to be raised */
-	// 	while (!LL_USART_IsActiveFlag_TXE(USART1))
-	// 	{
-	// 	}
+	uint8_t ubSend = 0;
+	const uint8_t aStringToSend[] = "TEST123456789\n\r";
+	while (ubSend < sizeof(aStringToSend))
+	{
+		/* Wait for TXE flag to be raised */
+		while (!LL_USART_IsActiveFlag_TXE(USART1))
+		{
+		}
 
-	// 	/* If last char to be sent, clear TC flag */
-	// 	if (ubSend == (sizeof(aStringToSend) - 1))
-	// 	{
-	// 	LL_USART_ClearFlag_TC(USART1); 
-	// 	}
+		/* If last char to be sent, clear TC flag */
+		if (ubSend == (sizeof(aStringToSend) - 1))
+		{
+		LL_USART_ClearFlag_TC(USART1); 
+		}
 
-	// 	/* Write character in Transmit Data register.
-	// 	TXE flag is cleared by writing data in TDR register */
-	// 	LL_USART_TransmitData8(USART1, aStringToSend[ubSend++]);
-	// }
+		/* Write character in Transmit Data register.
+		TXE flag is cleared by writing data in TDR register */
+		LL_USART_TransmitData8(USART1, aStringToSend[ubSend++]);
+	}
 
-	// /* Wait for TC flag to be raised for last char */
-	// while (!LL_USART_IsActiveFlag_TC(USART1))
-	// {
-	// }
+	/* Wait for TC flag to be raised for last char */
+	while (!LL_USART_IsActiveFlag_TC(USART1))
+	{
+	}
 
-	// LL_GPIO_TogglePin(GPIOB, LL_GPIO_PIN_8);
-
-
-
-
-	// Sortir la HSE sur MCO
-	
-	/*
-	//Avant de faire un UART, toggle un gpio dans une boucle infinie pour voir si mes inits clocks fonctionnent
-	//Il faut qd même activer la clock du gpio et ensuite taper dans le registre en write 1, wait, write 0.
-	LL_AHB_PERIPH_ALL
-	Smps -> alimentation
-	LSCOnfig -> choisir config RO
-	SysclkCOnfig -> Mettre la sysclk en direct HSE. C'est la que je lance la HSE et que je peux voir sur mon crystal Q2 si j'ai ma clock 32MHz
-	Radio clock config je m'en fou pour l'instant
-	D'abord je fais toggle mon IO ici et qd ça marche j'essaie de le toggle dans le main à la place d'un printk
-	Dans mon main, je met plus printk mais toogle IO
-	
-	Si ça marche, faire du debug
-	Soit gdb breakpoint voir si on y va
-	Soit flash depuis PC linux. Brancher board sur PC Windows, ouvrir keil sans projet. File -> attach to target et regarder les registres.
-	Qd je fais du debug, pour rester dans la zone de code jusqu'à activation j'utilise des boucles d'attentes actives. Exemple : while(LL_PWR_IsSMPSReady()) pour pas que le code passe à la suite avant que SMPS activer.
-	//init UART
-	//MX_USART_UART_Init();
-	*/
+	LL_GPIO_TogglePin(GPIOB, LL_GPIO_PIN_8);
 	
 	return 0;
 }
