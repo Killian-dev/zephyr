@@ -36,8 +36,8 @@
 &rcc {
 	clocks = <&pll>;
 	clock-frequency = <DT_FREQ_M(32)>;
-	ahb-prescaler = <1>;	//Sur LP, il n'y a pas de prescaler associé aux bus ahb, apb donc on divise par 1
-	apb1-prescaler = <1>;
+	ahb-prescaler = <1>;	
+	apb1-prescaler = <1>;	// Divided by 1 because on LP, there are no prescaler associated to ahb/apb buses
 	apb2-prescaler = <1>;
 };
 

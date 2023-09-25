@@ -101,14 +101,14 @@
 			};
         };
 
-        // pincrtl : add & size à vérif
+        // pincrtl : address-cells & size-cells to verified
         pinctrl: pin-controller@48000000 {
             compatible = "st,stm32-pinctrl";
             #address-cells = <1>;
             #size-cells = <1>;
             reg = <0x48000000 DT_SIZE_K(2)>;
 
-            // gpioa : cells à vérif
+            // gpioa : gpio-cells to verified
             gpioa: gpio@48000000 {
                 compatible = "st,stm32-gpio";
                 gpio-controller;
@@ -116,7 +116,7 @@
                 reg = <0x48000000 DT_SIZE_K(1)>;
 				clocks = <&rcc BLUENRG_CLOCK_BUS_AHB0 0x00000004>; // AHB0 macro cells clock enable register (RCC_AHBENR)
             };
-            // gpiob : cells à vérif
+            // gpiob : gpio-cells to verified
             gpiob: gpio@48100000 {
                 compatible = "st,stm32-gpio";
                 gpio-controller;
@@ -127,7 +127,7 @@
         };
 
     
-        // interrupt & clocks à vérif
+        // interrupt & clocks to verified
         usart1: serial@41004000 {
             compatible = "st,stm32-usart", "st,stm32-uart";
             //compatible = "st,bluenrg_lp-uart";
@@ -138,7 +138,7 @@
             status = "disabled";
         };
 
-        // // adc1 : clocks & io-channel à vérif
+        // // adc1 : clocks & io-channel to verified
         // adc1: adc@41006000 {
         //     compatible = "st,bluenrg_lp-adc";
         //     reg = <0x41006000 0x100>;
@@ -149,7 +149,7 @@
         //     #io-channel-cells = <1>;
         // };
 
-        // // clocks & add & size-cells à vérif
+        // // clocks & add & size-cells to verified
         // spi1: spi@41002000 {
         //     compatible = "st,bluenrg_lp-spi";
         //     #address-cells = <1>;
@@ -163,7 +163,7 @@
     };
 };
  
-// nvic : ok
+// nvic
 &nvic {
     arm,num-irq-priority-bits = <2>;
 };
